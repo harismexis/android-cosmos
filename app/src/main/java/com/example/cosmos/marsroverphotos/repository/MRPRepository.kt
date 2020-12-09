@@ -1,35 +1,35 @@
-package com.example.cosmos.apod.repository
+package com.example.cosmos.marsroverphotos.repository
 
-import com.example.cosmos.apod.api.APODApi
-import com.example.cosmos.apod.model.APODResponse
+import com.example.cosmos.marsroverphotos.api.MRPApi
+import com.example.cosmos.marsroverphotos.model.response.LatestMRPResponse
+import com.example.cosmos.wshared.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class APODRepository {
+class MRPRepository {
 
     companion object {
-        const val BASE_URL = "https://api.nasa.gov/planetary/"
+        const val BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
     }
 
-    private val api: APODApi
+    private val api: MRPApi
 
     init {
         api = createApi()
     }
 
-    private fun createApi(): APODApi {
-        return buildRetrofit().create(APODApi::class.java)
+    private fun createApi(): MRPApi {
+        return buildRetrofit().create(MRPApi::class.java)
     }
 
     private fun buildRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(createOkHttpClient())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(buildGSON()))
             .build()
     }
@@ -41,16 +41,14 @@ class APODRepository {
 
     private fun buildGSON(): Gson {
         return GsonBuilder()
-            .setLenient()
+            //.setLenient()
             .create()
     }
 
-    suspend fun getAPOD(
-        dateOfApod: String?,
-        isHD: Boolean?,
-        apiKey: String
-    ): APODResponse? {
-        return api.getAPOD(dateOfApod, isHD, apiKey)
+    suspend fun getCuriosityLatestPhotos(): LatestMRPResponse? {
+        return api.queryCuriosityByLatestPhotos(
+            Constants.NASA_API_KEY
+        )
     }
 
 }

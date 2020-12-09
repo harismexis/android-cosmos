@@ -1,4 +1,4 @@
-package com.example.cosmos.network;
+package com.example.cosmos.wshared.network;
 
 public enum ConnectivityState {
         CONNECTED,

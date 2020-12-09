@@ -12,8 +12,8 @@ import com.example.cosmos.apod.repository.APODRepository
 import com.example.cosmos.apod.viewmodel.APODViewModel
 import com.example.cosmos.databinding.ActivityApodBinding
 import com.example.cosmos.databinding.ApodViewBinding
-import com.example.cosmos.network.ConnectivityMonitor
-import com.example.cosmos.network.ConnectivityRequestProvider
+import com.example.cosmos.wshared.network.ConnectivityMonitor
+import com.example.cosmos.wshared.network.ConnectivityRequestProvider
 
 class APODActivity : AppCompatActivity() {
 

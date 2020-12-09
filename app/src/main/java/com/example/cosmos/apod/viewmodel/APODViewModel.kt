@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cosmos.apod.model.APODResponse
 import com.example.cosmos.apod.repository.APODRepository
-import com.example.cosmos.network.ConnectivityMonitor
-import com.example.scoredonut.extensions.getErrorMessage
+import com.example.cosmos.wshared.extensions.getErrorMessage
+import com.example.cosmos.wshared.network.ConnectivityMonitor
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -51,7 +51,7 @@ class APODViewModel (
     private fun retrieveAPOD(): Job {
         return viewModelScope.launch {
             try {
-                mApod.value = apodRepo.getAPOD(NASA_API_KEY, null, true)
+                mApod.value = apodRepo.getAPOD(null, true, NASA_API_KEY)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

@@ -1,4 +1,4 @@
-package com.example.scoredonut.extensions
+package com.example.cosmos.wshared.extensions
 
 fun Throwable.getErrorMessage(): String {
     var errorMsg = "$this, null error message"

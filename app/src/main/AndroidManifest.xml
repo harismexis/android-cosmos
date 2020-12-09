@@ -13,11 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cosmos">
 
-        <activity android:name=".apod.ui.APODActivity">
+        <activity android:name=".marsroverphotos.ui.MRPActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".apod.ui.APODActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity android:name=".MainActivity">

@@ -1,4 +1,4 @@
-package com.example.cosmos.network
+package com.example.cosmos.wshared.network
 
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
