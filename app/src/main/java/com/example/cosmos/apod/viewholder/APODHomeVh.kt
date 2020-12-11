@@ -4,29 +4,23 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.cosmos.R
 import com.example.cosmos.apod.model.APOD
 import com.example.cosmos.apod.viewmodel.APODEntryVm
-import com.example.cosmos.databinding.HomeApodRowBinding
+import com.example.cosmos.databinding.ApodHomeRowBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
 import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class APODHomeVh(
-    private var binding: HomeApodRowBinding,
+    private var viewBinding: ApodHomeRowBinding,
     private var viewModel: APODEntryVm,
     rowClickListener: HomeClickListener
-) : BaseHomeVh(binding, rowClickListener) {
+) : BaseHomeVh(viewBinding, rowClickListener) {
 
     private val TAG = APODHomeVh::class.qualifiedName
-    private var imgPhoto: ImageView = itemView.findViewById(R.id.imgContainer)
-    private var txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
-    private var txtDate: TextView = itemView.findViewById(R.id.txtDate)
 
     override fun bind(
         rowType: RowType,
@@ -41,8 +35,8 @@ class APODHomeVh(
 
     private fun updateUI(item: APOD) {
         populateImage(item.hdurl)
-        txtTitle.text = item.title
-        txtDate.text = item.date
+        viewBinding.txtTitle.text = item.title
+        viewBinding.txtDate.text = item.date
     }
 
     private fun populateImage(url: String?) {
@@ -50,7 +44,7 @@ class APODHomeVh(
             .load(Uri.parse(url))
             .error(ColorDrawable(Color.BLACK))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(imgPhoto)
+            .into(viewBinding.imgContainer)
     }
 
     override fun unbind() {

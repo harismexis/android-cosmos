@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cosmos.R
-import com.example.cosmos.databinding.HomeMrpRowBinding
+import com.example.cosmos.databinding.MrpHomeRowBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
 import com.example.cosmos.mrp.model.response.MRPItem
@@ -18,10 +18,10 @@ import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class MRPHomeVh(
-    private var binding: HomeMrpRowBinding,
+    private var viewBinding: MrpHomeRowBinding,
     private var viewModel: MRPEntryVm,
     rowClickListener: HomeClickListener
-) : BaseHomeVh(binding, rowClickListener) {
+) : BaseHomeVh(viewBinding, rowClickListener) {
 
     private val TAG = MRPHomeVh::class.qualifiedName
     private var imgPhoto: ImageView = itemView.findViewById(R.id.imgContainer)
