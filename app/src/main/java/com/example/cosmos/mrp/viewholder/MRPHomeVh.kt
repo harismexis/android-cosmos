@@ -14,6 +14,7 @@ import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
 import com.example.cosmos.mrp.model.response.MRPItem
 import com.example.cosmos.mrp.viewmodel.MRPEntryVm
+import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class MRPHomeVh(
@@ -28,10 +29,10 @@ class MRPHomeVh(
     private var txtDate: TextView = itemView.findViewById(R.id.txtDate)
 
     override fun bind(
-        item: Any?,
+        rowType: RowType,
         position: Int
     ) {
-        super.bind(item, position)
+        super.bind(rowType, position)
         viewModel.getCuriosityLatestMRP(
             { updateUI(it) },
             { Log.d(TAG, it.getErrorMessage()) }

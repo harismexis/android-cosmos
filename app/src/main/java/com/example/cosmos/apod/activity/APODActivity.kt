@@ -1,5 +1,7 @@
 package com.example.cosmos.apod.activity
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -20,6 +22,12 @@ class APODActivity : AppCompatActivity() {
     private lateinit var viewModel: APODVm
     private lateinit var binding: ActivityApodBinding
     private lateinit var apodBinding: ApodViewBinding
+
+    companion object {
+        fun Context.startAPODActivity() {
+            startActivity(Intent(this, APODActivity::class.java))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

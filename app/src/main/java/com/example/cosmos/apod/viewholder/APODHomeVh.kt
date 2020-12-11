@@ -14,6 +14,7 @@ import com.example.cosmos.apod.viewmodel.APODEntryVm
 import com.example.cosmos.databinding.HomeApodRowBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
+import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class APODHomeVh(
@@ -28,10 +29,10 @@ class APODHomeVh(
     private var txtDate: TextView = itemView.findViewById(R.id.txtDate)
 
     override fun bind(
-        item: Any?,
+        rowType: RowType,
         position: Int
     ) {
-        super.bind(item, position)
+        super.bind(rowType, position)
         viewModel.getAPOD(
             { updateUI(it) },
             { Log.d(TAG, it.getErrorMessage()) }

@@ -3,6 +3,7 @@ package com.example.cosmos.home.viewholder
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
+import com.example.cosmos.workshared.enums.RowType
 
 abstract class BaseHomeVh(
     private var viewBinding: ViewBinding,
@@ -10,11 +11,11 @@ abstract class BaseHomeVh(
 ) : RecyclerView.ViewHolder(viewBinding.root) {
 
     open fun bind(
-        item: Any?,
+        rowType: RowType,
         position: Int
     ) {
         viewBinding.root.setOnClickListener {
-            click.onHomeItemClick(it, position)
+            click.onHomeItemClick(rowType, position)
         }
     }
 
