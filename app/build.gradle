@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def commonValues = rootProject.ext.common
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -15,6 +17,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "NASA_API_KEY", commonValues.NASA_API_KEY
+        buildConfigField "String", "APOD_BASE_URL", commonValues.APOD_BASE_URL
+        buildConfigField "String", "MRP_BASE_URL", commonValues.MRP_BASE_URL
     }
 
     buildTypes {
