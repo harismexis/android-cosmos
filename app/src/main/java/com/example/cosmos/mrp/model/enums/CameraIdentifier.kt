@@ -1,4 +1,4 @@
-package com.example.cosmos.mrp.model
+package com.example.cosmos.mrp.model.enums
 
 enum class CameraIdentifier(val identifier: String) {
     FHAZ("fhaz"), // Front Hazard Avoidance Camera

@@ -2,7 +2,7 @@ package com.example.cosmos.apod.repository
 
 import com.example.cosmos.BuildConfig
 import com.example.cosmos.apod.api.APODApi
-import com.example.cosmos.apod.model.APODResponse
+import com.example.cosmos.apod.model.APOD
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -40,17 +40,14 @@ open class APODRepo {
             .create()
     }
 
-    suspend fun getAPOD(
-        apiKey: String
-    ): APODResponse? {
-        return getAPOD(null, true, apiKey)
+    suspend fun getAPOD(): APOD? {
+        return getAPOD(null, true)
     }
 
-    suspend fun getAPOD(
+    private suspend fun getAPOD(
         dateOfApod: String?,
-        isHD: Boolean?,
-        apiKey: String
-    ): APODResponse? {
-        return api.getAPOD(dateOfApod, isHD, apiKey)
+        isHD: Boolean?
+    ): APOD? {
+        return api.getAPOD(dateOfApod, isHD, BuildConfig.NASA_API_KEY)
     }
 }

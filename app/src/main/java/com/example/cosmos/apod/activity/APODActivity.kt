@@ -7,13 +7,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.cosmos.apod.model.APODResponse
+import com.example.cosmos.apod.model.APOD
 import com.example.cosmos.apod.repository.APODRepo
 import com.example.cosmos.apod.viewmodel.APODVm
 import com.example.cosmos.databinding.ActivityApodBinding
 import com.example.cosmos.databinding.ApodViewBinding
-import com.example.cosmos.workshared.network.ConnectivityMonitor
-import com.example.cosmos.workshared.network.ConnectivityRequestProvider
+import com.example.cosmos.workshared.util.network.ConnectivityMonitor
+import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
 
 class APODActivity : AppCompatActivity() {
 
@@ -47,7 +47,7 @@ class APODActivity : AppCompatActivity() {
         })
     }
 
-    private fun updateUI(apod: APODResponse) {
+    private fun updateUI(apod: APOD) {
         apod.hdurl?.let {
             loadImage(it)
         }

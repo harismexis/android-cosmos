@@ -9,7 +9,7 @@ import com.example.cosmos.mrp.extensions.toUiModel
 import com.example.cosmos.mrp.model.ui.MRPUiModel
 import com.example.cosmos.mrp.repository.MRPRepo
 import com.example.cosmos.workshared.extensions.getErrorMessage
-import com.example.cosmos.workshared.network.ConnectivityMonitor
+import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -40,7 +40,7 @@ class MRPVm(
     fun getCuriosityLatestPhotos(): Job {
         return viewModelScope.launch {
             try {
-                val response = marsRepo.getCuriosityLatestPhotos()
+                val response = marsRepo.getCuriosityLatestMRP()
                 mMRP.value = response.toUiModel()
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

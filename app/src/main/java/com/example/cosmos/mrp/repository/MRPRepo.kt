@@ -2,16 +2,16 @@ package com.example.cosmos.mrp.repository
 
 import com.example.cosmos.BuildConfig
 import com.example.cosmos.mrp.api.MRPApi
-import com.example.cosmos.mrp.model.response.LatestMRPResponse
+import com.example.cosmos.mrp.model.response.LatestMRP
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MRPRepo {
+open class MRPRepo {
 
-    private val api: MRPApi
+    protected val api: MRPApi
 
     init {
         api = createApi()
@@ -21,7 +21,7 @@ class MRPRepo {
         return buildRetrofit().create(MRPApi::class.java)
     }
 
-    private fun buildRetrofit(): Retrofit {
+    open fun buildRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.MRP_BASE_URL)
             .client(createOkHttpClient())
@@ -29,19 +29,19 @@ class MRPRepo {
             .build()
     }
 
-    private fun createOkHttpClient(): OkHttpClient {
+    protected fun createOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .build()
     }
 
-    private fun buildGSON(): Gson {
+    protected fun buildGSON(): Gson {
         return GsonBuilder()
             .setLenient()
             .create()
     }
 
-    suspend fun getCuriosityLatestPhotos(): LatestMRPResponse? {
-        return api.queryCuriosityByLatestPhotos(
+    suspend fun getCuriosityLatestMRP(): LatestMRP? {
+        return api.queryCuriosityByLatestMRP(
             BuildConfig.NASA_API_KEY
         )
     }

@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cosmos.R
-import com.example.cosmos.mrp.model.response.MarsPhoto
+import com.example.cosmos.mrp.model.response.MRPItem
 import com.example.cosmos.mrp.viewholder.MRPVh
 
-class MarsPhotosAdapter(
-    private var models: List<MarsPhoto>,
+class MRPAdapter(
+    private var models: List<MRPItem>,
     // private var itemClickListener: ResponderViewHolder.ItemClickListener
 ) : RecyclerView.Adapter<MRPVh>() {
 

@@ -1,4 +1,4 @@
-package com.example.cosmos.workshared.util
+package com.example.cosmos.workshared.util.rx
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

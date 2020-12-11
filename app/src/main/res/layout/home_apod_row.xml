@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imgApod"
+        android:id="@+id/imgContainer"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,13 +15,13 @@
     <TextView
         android:id="@+id/txtTitle"
         style="@style/APODTextView"
-        app:layout_constraintStart_toEndOf="@+id/imgApod"
+        app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtDate"
         style="@style/APODTextView"
-        app:layout_constraintStart_toEndOf="@+id/imgApod"
+        app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,20 +4,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmos.databinding.ActivityMrpBinding
-import com.example.cosmos.mrp.adapter.MarsPhotosAdapter
-import com.example.cosmos.mrp.model.response.MarsPhoto
+import com.example.cosmos.mrp.adapter.MRPAdapter
+import com.example.cosmos.mrp.model.response.MRPItem
 import com.example.cosmos.mrp.model.ui.MRPUiModel
 import com.example.cosmos.mrp.repository.MRPRepo
 import com.example.cosmos.mrp.viewmodel.MRPVm
-import com.example.cosmos.workshared.network.ConnectivityMonitor
-import com.example.cosmos.workshared.network.ConnectivityRequestProvider
+import com.example.cosmos.workshared.util.network.ConnectivityMonitor
+import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
 
 class MRPActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MRPVm
     private lateinit var viewBinding: ActivityMrpBinding
-    private lateinit var adapter: MarsPhotosAdapter
-    private var marsPhotos: MutableList<MarsPhoto> = mutableListOf()
+    private lateinit var adapter: MRPAdapter
+    private var marsPhotos: MutableList<MRPItem> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +34,7 @@ class MRPActivity : AppCompatActivity() {
     }
 
     private fun initRecycler() {
-        // enableAnimationOnRecycler(false)
-        // uiModels.addAll(viewModel.getInitialUiModels())
-        adapter = MarsPhotosAdapter(marsPhotos)
-        // adapter.setHasStableIds(true)
+        adapter = MRPAdapter(marsPhotos)
         viewBinding.rvMarsPhotos.layoutManager = LinearLayoutManager(this)
         viewBinding.rvMarsPhotos.adapter = adapter
     }

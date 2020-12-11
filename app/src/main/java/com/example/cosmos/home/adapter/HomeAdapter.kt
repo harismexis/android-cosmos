@@ -1,14 +1,16 @@
-package com.example.cosmos.home.ui.adapter
+package com.example.cosmos.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cosmos.home.ui.viewholder.BaseHomeVh
-import com.example.cosmos.home.ui.viewholder.factory.createHomeViewHolder
-import com.example.cosmos.mrp.model.response.MarsPhoto
+import com.example.cosmos.home.interfaces.HomeClickListener
+import com.example.cosmos.home.viewholder.BaseHomeVh
+import com.example.cosmos.home.viewholder.factory.createHomeViewHolder
+import com.example.cosmos.workshared.enums.RowType
 
 class HomeAdapter(
-    private var models: List<MarsPhoto>
+    private var models: List<RowType>,
+    private var clickListener: HomeClickListener
 ) : RecyclerView.Adapter<BaseHomeVh>() {
 
     companion object {
@@ -20,7 +22,7 @@ class HomeAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BaseHomeVh {
-        return createHomeViewHolder(viewType, LayoutInflater.from(parent.context))
+        return createHomeViewHolder(viewType, LayoutInflater.from(parent.context), clickListener)
     }
 
     override fun getItemViewType(position: Int): Int {

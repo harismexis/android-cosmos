@@ -1,4 +1,4 @@
-package com.example.cosmos.workshared.network
+package com.example.cosmos.workshared.util.network
 
 import android.content.Context
 import android.net.ConnectivityManager

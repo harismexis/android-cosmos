@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cosmos.R
-import com.example.cosmos.mrp.model.response.MarsPhoto
+import com.example.cosmos.mrp.model.response.MRPItem
 
 class MRPVh(
     view: View
@@ -24,7 +24,7 @@ class MRPVh(
     }
 
     fun bind(
-        item: MarsPhoto?,
+        item: MRPItem?,
         position: Int
     ) {
         Glide.with(itemView.context)

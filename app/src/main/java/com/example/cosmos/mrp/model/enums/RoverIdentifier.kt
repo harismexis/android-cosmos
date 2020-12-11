@@ -1,4 +1,4 @@
-package com.example.cosmos.mrp.model
+package com.example.cosmos.mrp.model.enums
 
 enum class RoverIdentifier(val identifier: String) {
     CURIOSITY("curiosity"),
