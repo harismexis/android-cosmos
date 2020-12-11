@@ -17,6 +17,7 @@
     <TextView
         android:id="@+id/txtTitle"
         style="@style/BaseMarginTextView"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
     <TextView
         android:id="@+id/txtDate"
         style="@style/BaseMarginTextView"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +35,7 @@
     <TextView
         android:id="@+id/txtExplanation"
         style="@style/BaseMarginTextView"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDate" />
@@ -40,16 +43,16 @@
     <TextView
         android:id="@+id/txtServiceVersion"
         style="@style/BaseMarginTextView"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtExplanation" />
 
     <TextView
         android:id="@+id/txtMediaType"
         style="@style/BaseMarginTextView"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtServiceVersion" />
 
