@@ -70,8 +70,11 @@ class MRPActivity : AppCompatActivity(), MRPItemVh.MRPItemClickListener {
         adapter.notifyDataSetChanged()
     }
 
-    override fun onMRPItemClick(item: MRPItem, position: Int) {
-        //
+    override fun onMRPItemClick(
+        item: MRPItem,
+        position: Int
+    ) {
+        startMRPDetailActivity()
     }
 
 }

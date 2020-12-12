@@ -27,10 +27,6 @@ class MRPVm(
     val marsPhotosUiModel: LiveData<MRPUiModel>
         get() = mMRP
 
-    init {
-        //getCuriosityLatestPhotos()
-    }
-
     override fun onCleared() {
         super.onCleared()
         jobGetCredit?.cancel()

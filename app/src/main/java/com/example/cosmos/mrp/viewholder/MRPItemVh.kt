@@ -3,6 +3,7 @@ package com.example.cosmos.mrp.viewholder
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -26,13 +27,13 @@ class MRPItemVh(
     ) {
         populateImage(item?.imgSrc)
         viewBinding.txtMeta.text = item?.sol.toString()
-//        viewBinding.root.setOnClickListener {
-//            item?.also {
-//                itemClickListener.onMRPItemClick(it, position)
-//            } ?: run {
-//                Log.d(TAG, "Null MRP item")
-//            }
-//        }
+        viewBinding.root.setOnClickListener {
+            item?.also {
+                itemClickListener.onMRPItemClick(it, position)
+            } ?: run {
+                Log.d(TAG, "Null MRP item")
+            }
+        }
     }
 
     private fun populateImage(url: String?) {

@@ -40,8 +40,14 @@ open class APODRepo {
             .create()
     }
 
-    suspend fun getAPOD(): APOD? {
+    suspend fun getAPODToday(): APOD? {
         return getAPOD(null, true)
+    }
+
+    suspend fun getAPODByDate(
+        dateOfApod: String?
+    ): APOD? {
+        return api.getAPOD(dateOfApod, true, BuildConfig.NASA_API_KEY)
     }
 
     private suspend fun getAPOD(

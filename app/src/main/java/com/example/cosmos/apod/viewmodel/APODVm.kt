@@ -12,7 +12,7 @@ import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class APODVm (
+class APODVm(
     var apodRepo: APODRepo,
     var connectivity: ConnectivityMonitor,
 ) : ViewModel() {
@@ -25,7 +25,7 @@ class APODVm (
         get() = mApod
 
     init {
-        retrieveAPOD()
+        fetchAPODToday()
     }
 
     override fun onCleared() {
@@ -34,10 +34,20 @@ class APODVm (
         jobGetCredit = null
     }
 
-    private fun retrieveAPOD(): Job {
+    private fun fetchAPODToday(): Job {
         return viewModelScope.launch {
             try {
-                mApod.value = apodRepo.getAPOD()
+                mApod.value = apodRepo.getAPODToday()
+            } catch (e: Exception) {
+                Log.d(TAG, e.getErrorMessage())
+            }
+        }
+    }
+
+    fun fetchAPODByDate(date: String): Job {
+        return viewModelScope.launch {
+            try {
+                mApod.value = apodRepo.getAPODByDate(date)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

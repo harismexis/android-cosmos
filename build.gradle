@@ -6,6 +6,9 @@ buildscript {
         google()
         jcenter()
     }
+    ext {
+        kotlin_version = '1.4.21'
+    }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.1'
