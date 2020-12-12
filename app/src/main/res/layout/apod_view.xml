@@ -4,7 +4,11 @@
     android:id="@+id/apod_root_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/default_background_color">
+    android:background="@color/default_background_color"
+    android:paddingStart="10dp"
+    android:paddingTop="20dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="20dp">
 
     <ImageView
         android:id="@+id/imgApod"

@@ -11,8 +11,8 @@
 
     <style name="BaseMarginTextView" parent="BaseTextView">
         <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginStart">20dp</item>
-        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
     </style>
 
 </resources>

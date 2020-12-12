@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -21,6 +22,7 @@ import com.example.cosmos.databinding.ActivityApodBinding
 import com.example.cosmos.databinding.ApodViewBinding
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -61,24 +63,6 @@ class APODActivity : AppCompatActivity() {
         }
     }
 
-    private fun showDatePicker() {
-        val calendar: Calendar = Calendar.getInstance()
-        val year: Int = calendar.get(Calendar.YEAR)
-        val month: Int = calendar.get(Calendar.MONTH)
-        val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
-        picker = DatePickerDialog(
-            this@APODActivity,
-            { _, yearOf, monthOfYear, dayOfMonth ->
-                val date = yearOf.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth
-                viewModel.fetchAPODByDate(date)
-            },
-            year,
-            month,
-            day
-        )
-        picker.show()
-    }
-
     private fun initialiseViewBinding() {
         binding = ActivityApodBinding.inflate(layoutInflater)
         apodBinding = binding.apodContainer
@@ -97,8 +81,35 @@ class APODActivity : AppCompatActivity() {
         })
     }
 
+    private fun getCalendar(): Calendar {
+        val calendar: Calendar = Calendar.getInstance()
+        if (!apodBinding.txtDate.text.isNullOrBlank()) {
+            val format = SimpleDateFormat("yyyy-MM-dd")
+            calendar.time = format.parse(apodBinding.txtDate.text.toString())
+        }
+        return calendar
+    }
+
+    private fun showDatePicker() {
+        val calendar = getCalendar()
+        val year: Int = calendar.get(Calendar.YEAR)
+        val month: Int = calendar.get(Calendar.MONTH)
+        val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        picker = DatePickerDialog(
+            this@APODActivity,
+            { _, yearOf, monthOfYear, dayOfMonth ->
+                val date = yearOf.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth
+                viewModel.fetchAPODByDate(date)
+            },
+            year,
+            month,
+            day
+        )
+        picker.show()
+    }
+
     private fun updateUI(apod: APOD) {
-        apod.hdurl?.let {
+        apod.url?.let {
             loadImage(it)
         }
         apodBinding.txtTitle.text = apod.title
@@ -106,6 +117,7 @@ class APODActivity : AppCompatActivity() {
         apodBinding.txtExplanation.text = apod.explanation
         apodBinding.txtServiceVersion.text = apod.serviceVersion
         apodBinding.txtMediaType.text = apod.mediaType
+        binding.apodContainer.root.visibility = View.VISIBLE
     }
 
     private fun loadImage(imgUrl: String) {
@@ -117,5 +129,6 @@ class APODActivity : AppCompatActivity() {
             .placeholder(ColorDrawable(Color.BLACK))
             .into(apodBinding.imgApod)
     }
+
 
 }
