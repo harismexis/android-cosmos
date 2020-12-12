@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Cosmos</string>
     <string name="date">Date</string>
+
+    <string name="apod_activity_label">Astronomy Picture of the day</string>
+
 </resources>

@@ -45,6 +45,7 @@ class APODVm(
     }
 
     fun fetchAPODByDate(date: String) {
+        jobFetchAPOD?.cancel()
         jobFetchAPOD = viewModelScope.launch {
             try {
                 mApod.value = apodRepo.getAPODByDate(date)

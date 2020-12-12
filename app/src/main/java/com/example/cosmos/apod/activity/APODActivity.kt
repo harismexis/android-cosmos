@@ -3,17 +3,20 @@ package com.example.cosmos.apod.activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.cosmos.R
 import com.example.cosmos.apod.model.APOD
 import com.example.cosmos.apod.repository.APODRepo
@@ -105,6 +108,7 @@ class APODActivity : AppCompatActivity() {
             month,
             day
         )
+        picker.datePicker.maxDate = Calendar.getInstance().timeInMillis
         picker.show()
     }
 
@@ -121,13 +125,25 @@ class APODActivity : AppCompatActivity() {
     }
 
     private fun loadImage(imgUrl: String) {
+        apodBinding.imgApod.visibility = View.GONE
+        apodBinding.imgApodProgressView.visibility = View.VISIBLE
         Glide.with(this)
+            .asBitmap()
             .load(Uri.parse(imgUrl))
-            .error(ColorDrawable(Color.BLACK))
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .dontAnimate()
-            .placeholder(ColorDrawable(Color.BLACK))
-            .into(apodBinding.imgApod)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(object : CustomTarget<Bitmap?>() {
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap?>?
+                ) {
+                    apodBinding.imgApod.visibility = View.VISIBLE
+                    apodBinding.imgApod.setImageBitmap(resource)
+                    apodBinding.imgApodProgressView.visibility = View.GONE
+                }
+
+                override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
+            })
+
     }
 
 

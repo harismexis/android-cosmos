@@ -15,13 +15,13 @@
 
     <TextView
         android:id="@+id/txtTitle"
-        style="@style/BaseMarginTextView"
+        style="@style/MarginTextView"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtDate"
-        style="@style/BaseMarginTextView"
+        style="@style/MarginTextView"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
