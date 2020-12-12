@@ -34,14 +34,6 @@ class APODVm (
         jobGetCredit = null
     }
 
-    fun bind() {
-
-    }
-
-    fun unbind() {
-
-    }
-
     private fun retrieveAPOD(): Job {
         return viewModelScope.launch {
             try {

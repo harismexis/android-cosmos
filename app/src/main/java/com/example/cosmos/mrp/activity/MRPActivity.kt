@@ -6,20 +6,24 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmos.databinding.ActivityMrpBinding
-import com.example.cosmos.mrp.adapter.MRPAdapter
+import com.example.cosmos.mrp.adapter.MRPItemAdapter
 import com.example.cosmos.mrp.model.response.MRPItem
 import com.example.cosmos.mrp.model.ui.MRPUiModel
 import com.example.cosmos.mrp.repository.MRPRepo
+import com.example.cosmos.mrp.viewholder.MRPItemVh
 import com.example.cosmos.mrp.viewmodel.MRPVm
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
 
-class MRPActivity : AppCompatActivity() {
+/**
+ * Activity showing a list of Mars Rover Photos (MRP)
+ */
+class MRPActivity : AppCompatActivity(), MRPItemVh.MRPItemClickListener {
 
     private lateinit var viewModel: MRPVm
     private lateinit var viewBinding: ActivityMrpBinding
-    private lateinit var adapter: MRPAdapter
-    private var marsPhotos: MutableList<MRPItem> = mutableListOf()
+    private lateinit var adapter: MRPItemAdapter
+    private var mrpItems: MutableList<MRPItem> = mutableListOf()
 
     companion object {
         fun Context.startMRPActivity() {
@@ -42,7 +46,7 @@ class MRPActivity : AppCompatActivity() {
     }
 
     private fun initRecycler() {
-        adapter = MRPAdapter(marsPhotos)
+        adapter = MRPItemAdapter(mrpItems, this)
         viewBinding.rvMarsPhotos.layoutManager = LinearLayoutManager(this)
         viewBinding.rvMarsPhotos.adapter = adapter
     }
@@ -61,9 +65,13 @@ class MRPActivity : AppCompatActivity() {
     }
 
     private fun updateUI(uiModel: MRPUiModel) {
-        marsPhotos.clear()
-        marsPhotos.addAll(uiModel.photos)
+        mrpItems.clear()
+        mrpItems.addAll(uiModel.photos)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onMRPItemClick(item: MRPItem, position: Int) {
+        //
     }
 
 }
