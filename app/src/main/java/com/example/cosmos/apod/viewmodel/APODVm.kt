@@ -18,7 +18,7 @@ class APODVm(
 ) : ViewModel() {
 
     private val TAG = APODVm::class.qualifiedName
-    private var jobGetCredit: Job? = null
+    private var jobFetchAPOD: Job? = null
 
     private val mApod = MutableLiveData<APOD>()
     val apod: LiveData<APOD>
@@ -30,12 +30,12 @@ class APODVm(
 
     override fun onCleared() {
         super.onCleared()
-        jobGetCredit?.cancel()
-        jobGetCredit = null
+        jobFetchAPOD?.cancel()
+        jobFetchAPOD = null
     }
 
-    private fun fetchAPODToday(): Job {
-        return viewModelScope.launch {
+    private fun fetchAPODToday() {
+        jobFetchAPOD = viewModelScope.launch {
             try {
                 mApod.value = apodRepo.getAPODToday()
             } catch (e: Exception) {
@@ -44,8 +44,8 @@ class APODVm(
         }
     }
 
-    fun fetchAPODByDate(date: String): Job {
-        return viewModelScope.launch {
+    fun fetchAPODByDate(date: String) {
+        jobFetchAPOD = viewModelScope.launch {
             try {
                 mApod.value = apodRepo.getAPODByDate(date)
             } catch (e: Exception) {

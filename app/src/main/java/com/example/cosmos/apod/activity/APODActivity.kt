@@ -68,8 +68,8 @@ class APODActivity : AppCompatActivity() {
         val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
         picker = DatePickerDialog(
             this@APODActivity,
-            { view, year, monthOfYear, dayOfMonth ->
-                val date = year.toString() + "-" + (monthOfYear + 1) + "-" + day
+            { _, yearOf, monthOfYear, dayOfMonth ->
+                val date = yearOf.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth
                 viewModel.fetchAPODByDate(date)
             },
             year,
@@ -112,7 +112,8 @@ class APODActivity : AppCompatActivity() {
         Glide.with(this)
             .load(Uri.parse(imgUrl))
             .error(ColorDrawable(Color.BLACK))
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .dontAnimate()
             .placeholder(ColorDrawable(Color.BLACK))
             .into(apodBinding.imgApod)
     }
