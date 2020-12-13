@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/txtMeta"
-        style="@style/MarginTextView"
+        style="@style/MarginTxtv"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"

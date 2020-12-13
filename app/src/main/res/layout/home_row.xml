@@ -10,18 +10,25 @@
         android:id="@+id/imgContainer"
         android:layout_width="@dimen/apod_home_img_size"
         android:layout_height="@dimen/apod_home_img_size"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtTitle"
-        style="@style/MarginTextView"
+        style="@style/TitleTxtv"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtDate"
-        style="@style/MarginTextView"
+        android:id="@+id/txtMeta"
+        style="@style/MiniMetaTxtv"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 

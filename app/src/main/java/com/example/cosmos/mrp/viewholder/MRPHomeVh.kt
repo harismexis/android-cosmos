@@ -4,12 +4,10 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cosmos.R
-import com.example.cosmos.databinding.MrpHomeRowBinding
+import com.example.cosmos.databinding.HomeRowBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
 import com.example.cosmos.mrp.model.response.MRPItem
@@ -18,15 +16,12 @@ import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class MRPHomeVh(
-    private var viewBinding: MrpHomeRowBinding,
+    private var binding: HomeRowBinding,
     private var viewModel: MRPEntryVm,
     rowClickListener: HomeClickListener
-) : BaseHomeVh(viewBinding, rowClickListener) {
+) : BaseHomeVh(binding, rowClickListener) {
 
     private val TAG = MRPHomeVh::class.qualifiedName
-    private var imgPhoto: ImageView = itemView.findViewById(R.id.imgContainer)
-    private var txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
-    private var txtDate: TextView = itemView.findViewById(R.id.txtDate)
 
     override fun bind(
         rowType: RowType,
@@ -41,8 +36,8 @@ class MRPHomeVh(
 
     private fun updateUI(item: MRPItem) {
         populateImage(item.imgSrc)
-        txtTitle.text = item.id.toString()
-        txtDate.text = item.earthDate.toString()
+        binding.txtTitle.text = itemView.context.getString(R.string.vh_home_apod_title)
+        binding.txtMeta.text = item.earthDate.toString()
     }
 
     private fun populateImage(url: String?) {
@@ -50,7 +45,7 @@ class MRPHomeVh(
             .load(Uri.parse(url))
             .error(ColorDrawable(Color.BLACK))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(imgPhoto)
+            .into(binding.imgContainer)
     }
 
     override fun unbind() {

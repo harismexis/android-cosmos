@@ -11,35 +11,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.Cosmos">
 
         <activity android:name=".mrp.activity.MRPDetailActivity" />
 
-        <activity android:name=".home.activity.HomeActivity">
+        <activity
+            android:name=".home.activity.HomeActivity"
+            android:label="@string/activity_home_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".mrp.activity.MRPActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity
+            android:name=".mrp.activity.MRPActivity"
+            android:label="@string/activity_mrp_label"/>
 
         <activity
             android:name=".apod.activity.APODActivity"
-            android:label="@string/apod_activity_label">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:label="@string/activity_apod_label" />
 
     </application>
 

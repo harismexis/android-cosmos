@@ -45,7 +45,7 @@
 
     <TextView
         android:id="@+id/txtTitle"
-        style="@style/TitleTextView"
+        style="@style/TitleTxtv"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -54,7 +54,7 @@
 
     <TextView
         android:id="@+id/txtDate"
-        style="@style/DateTextView"
+        style="@style/DateTxtv"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -63,7 +63,7 @@
 
     <TextView
         android:id="@+id/txtExplanation"
-        style="@style/MetaTextView"
+        style="@style/MetaTxtv"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,7 @@
 
     <TextView
         android:id="@+id/txtServiceVersion"
-        style="@style/MarginTextView"
+        style="@style/MarginTxtv"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
 
     <TextView
         android:id="@+id/txtMediaType"
-        style="@style/MarginTextView"
+        style="@style/MarginTxtv"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

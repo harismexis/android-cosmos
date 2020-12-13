@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import com.example.cosmos.apod.repository.APODRxRepo
 import com.example.cosmos.apod.viewholder.APODHomeVh
 import com.example.cosmos.apod.viewmodel.APODEntryVm
-import com.example.cosmos.databinding.ApodHomeRowBinding
-import com.example.cosmos.databinding.MrpHomeRowBinding
+import com.example.cosmos.databinding.HomeRowBinding
 import com.example.cosmos.home.adapter.HomeAdapter
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
@@ -20,12 +19,12 @@ fun createHomeViewHolder(
 ): BaseHomeVh {
     return when (viewType) {
         HomeAdapter.VIEW_TYPE_APOND -> APODHomeVh(
-            ApodHomeRowBinding.inflate(inflater),
+            HomeRowBinding.inflate(inflater),
             APODEntryVm(APODRxRepo()),
             clickListener
         )
         else -> MRPHomeVh(
-            MrpHomeRowBinding.inflate(inflater),
+            HomeRowBinding.inflate(inflater),
             MRPEntryVm(MRPRxRepo()),
             clickListener
         )

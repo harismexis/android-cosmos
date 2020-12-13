@@ -6,15 +6,15 @@ import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.workshared.enums.RowType
 
 abstract class BaseHomeVh(
-    private var viewBinding: ViewBinding,
+    private var binding: ViewBinding,
     private var click: HomeClickListener
-) : RecyclerView.ViewHolder(viewBinding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     open fun bind(
         rowType: RowType,
         position: Int
     ) {
-        viewBinding.root.setOnClickListener {
+        binding.root.setOnClickListener {
             click.onHomeItemClick(rowType, position)
         }
     }
