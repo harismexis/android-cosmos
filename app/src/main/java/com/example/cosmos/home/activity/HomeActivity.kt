@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmos.apod.activity.APODActivity.Companion.startAPODActivity
 import com.example.cosmos.databinding.ActivityHomeBinding
-import com.example.cosmos.home.activity.viewmodel.HomeVm
 import com.example.cosmos.home.adapter.HomeAdapter
 import com.example.cosmos.home.interfaces.HomeClickListener
+import com.example.cosmos.home.viewmodel.HomeVm
 import com.example.cosmos.mrp.activity.MRPActivity.Companion.startMRPActivity
 import com.example.cosmos.workshared.enums.RowType
 

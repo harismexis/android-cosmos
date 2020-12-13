@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.cosmos.apod.model.APOD
 import com.example.cosmos.apod.repository.APODRxRepo
 import com.example.cosmos.workshared.extensions.getErrorMessage
-import com.example.cosmos.workshared.util.Action1
+import com.example.cosmos.workshared.util.functional.Action1
 import com.example.cosmos.workshared.util.rx.SchedulerProvider
 import com.example.cosmos.workshared.util.rx.setSchedulersSingle
 import io.reactivex.disposables.CompositeDisposable

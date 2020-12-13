@@ -3,45 +3,44 @@ package com.example.cosmos.mrp.viewholder
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.cosmos.R
 import com.example.cosmos.databinding.VhMrpItemBinding
-import com.example.cosmos.mrp.model.response.MRPItem
+import com.example.cosmos.mrp.model.ui.MRPItemModel
 
 class MRPItemVh(
-    private var viewBinding: VhMrpItemBinding,
+    private var binding: VhMrpItemBinding,
     private var itemClickListener: MRPItemClickListener
-) : RecyclerView.ViewHolder(viewBinding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     private val TAG = MRPItemVh::class.qualifiedName
 
     interface MRPItemClickListener {
-        fun onMRPItemClick(item: MRPItem, position: Int)
+        fun onMRPItemClick(item: MRPItemModel, position: Int)
     }
 
     fun bind(
-        item: MRPItem?,
+        item: MRPItemModel,
         position: Int
     ) {
-        populateImage(item?.imgSrc)
-        // viewBinding.txtMeta.text = item?.sol.toString()
-        viewBinding.root.setOnClickListener {
-            item?.also {
-                itemClickListener.onMRPItemClick(it, position)
-            } ?: run {
-                Log.d(TAG, "Null MRP item")
-            }
+        populateImage(item.imgSrc)
+        binding.txtDate.text = item.earthDate.toString()
+        binding.txtID.text = itemView.context.getString(R.string.vh_mrp_item_id_txt, item.id)
+        binding.root.setOnClickListener {
+            itemClickListener.onMRPItemClick(item, position)
         }
     }
 
     private fun populateImage(url: String?) {
+        binding.imgPhoto.layout(0, 0, 0, 0)
         Glide.with(itemView.context)
             .load(Uri.parse(url))
+            .override(binding.imgPhoto.height)
             .error(ColorDrawable(Color.BLACK))
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(viewBinding.imgPhoto)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .into(binding.imgPhoto)
     }
 
     fun unbind() {}

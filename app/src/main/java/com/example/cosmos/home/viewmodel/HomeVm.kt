@@ -1,4 +1,4 @@
-package com.example.cosmos.home.activity.viewmodel
+package com.example.cosmos.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.cosmos.workshared.enums.RowType

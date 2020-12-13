@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmos.databinding.ActivityMrpBinding
 import com.example.cosmos.mrp.adapter.MRPItemAdapter
-import com.example.cosmos.mrp.model.response.MRPItem
-import com.example.cosmos.mrp.model.ui.MRPUiModel
+import com.example.cosmos.mrp.model.ui.MRPItemModel
 import com.example.cosmos.mrp.repository.MRPRepo
 import com.example.cosmos.mrp.viewholder.MRPItemVh
 import com.example.cosmos.mrp.viewmodel.MRPVm
@@ -23,7 +22,7 @@ class MRPActivity : AppCompatActivity(), MRPItemVh.MRPItemClickListener {
     private lateinit var viewModel: MRPVm
     private lateinit var viewBinding: ActivityMrpBinding
     private lateinit var adapter: MRPItemAdapter
-    private var mrpItems: MutableList<MRPItem> = mutableListOf()
+    private var mrpItems: MutableList<MRPItemModel> = mutableListOf()
 
     companion object {
         fun Context.startMRPActivity() {
@@ -38,7 +37,7 @@ class MRPActivity : AppCompatActivity(), MRPItemVh.MRPItemClickListener {
         initRecycler()
         initialiseViewModel()
         observeLiveData()
-        viewModel.getCuriosityLatestPhotos()
+        viewModel.fetchCuriosityLatestMRP()
     }
 
     private fun initialiseViewBinding() {
@@ -47,6 +46,7 @@ class MRPActivity : AppCompatActivity(), MRPItemVh.MRPItemClickListener {
 
     private fun initRecycler() {
         adapter = MRPItemAdapter(mrpItems, this)
+        adapter.setHasStableIds(true)
         viewBinding.rvMarsPhotos.layoutManager = LinearLayoutManager(this)
         viewBinding.rvMarsPhotos.adapter = adapter
     }
@@ -59,19 +59,19 @@ class MRPActivity : AppCompatActivity(), MRPItemVh.MRPItemClickListener {
     }
 
     private fun observeLiveData() {
-        viewModel.marsPhotosUiModel.observe(this, {
+        viewModel.models.observe(this, {
             updateUI(it)
         })
     }
 
-    private fun updateUI(uiModel: MRPUiModel) {
+    private fun updateUI(uiModel: List<MRPItemModel>) {
         mrpItems.clear()
-        mrpItems.addAll(uiModel.photos)
+        mrpItems.addAll(uiModel)
         adapter.notifyDataSetChanged()
     }
 
     override fun onMRPItemClick(
-        item: MRPItem,
+        item: MRPItemModel,
         position: Int
     ) {
         startMRPDetailActivity()

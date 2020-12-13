@@ -5,7 +5,7 @@ import com.example.cosmos.apod.viewmodel.APODEntryVm
 import com.example.cosmos.mrp.model.response.MRPItem
 import com.example.cosmos.mrp.repository.MRPRxRepo
 import com.example.cosmos.workshared.extensions.getErrorMessage
-import com.example.cosmos.workshared.util.Action1
+import com.example.cosmos.workshared.util.functional.Action1
 import com.example.cosmos.workshared.util.rx.SchedulerProvider
 import com.example.cosmos.workshared.util.rx.setSchedulersSingle
 import io.reactivex.disposables.CompositeDisposable
