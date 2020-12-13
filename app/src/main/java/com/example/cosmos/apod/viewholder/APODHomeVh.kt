@@ -9,14 +9,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cosmos.R
 import com.example.cosmos.apod.model.APOD
 import com.example.cosmos.apod.viewmodel.APODEntryVm
-import com.example.cosmos.databinding.HomeRowBinding
+import com.example.cosmos.databinding.VhHomeRowBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
 import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class APODHomeVh(
-    private var viewBinding: HomeRowBinding,
+    private var viewBinding: VhHomeRowBinding,
     private var viewModel: APODEntryVm,
     rowClickListener: HomeClickListener
 ) : BaseHomeVh(viewBinding, rowClickListener) {

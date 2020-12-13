@@ -3,7 +3,7 @@ package com.example.cosmos.mrp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cosmos.databinding.MrpItemBinding
+import com.example.cosmos.databinding.VhMrpItemBinding
 import com.example.cosmos.mrp.model.response.MRPItem
 import com.example.cosmos.mrp.viewholder.MRPItemVh
 
@@ -17,7 +17,7 @@ class MRPItemAdapter(
         viewType: Int
     ): MRPItemVh {
         return MRPItemVh(
-            MrpItemBinding.inflate(LayoutInflater.from(parent.context)),
+            VhMrpItemBinding.inflate(LayoutInflater.from(parent.context)),
             itemClickListener
         )
     }

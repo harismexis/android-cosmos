@@ -7,7 +7,7 @@ import android.util.Log
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cosmos.R
-import com.example.cosmos.databinding.HomeRowBinding
+import com.example.cosmos.databinding.VhHomeRowBinding
 import com.example.cosmos.home.interfaces.HomeClickListener
 import com.example.cosmos.home.viewholder.BaseHomeVh
 import com.example.cosmos.mrp.model.response.MRPItem
@@ -16,7 +16,7 @@ import com.example.cosmos.workshared.enums.RowType
 import com.example.cosmos.workshared.extensions.getErrorMessage
 
 class MRPHomeVh(
-    private var binding: HomeRowBinding,
+    private var binding: VhHomeRowBinding,
     private var viewModel: MRPEntryVm,
     rowClickListener: HomeClickListener
 ) : BaseHomeVh(binding, rowClickListener) {
@@ -36,7 +36,7 @@ class MRPHomeVh(
 
     private fun updateUI(item: MRPItem) {
         populateImage(item.imgSrc)
-        binding.txtTitle.text = itemView.context.getString(R.string.vh_home_apod_title)
+        binding.txtTitle.text = itemView.context.getString(R.string.vh_home_mrp_title)
         binding.txtMeta.text = item.earthDate.toString()
     }
 

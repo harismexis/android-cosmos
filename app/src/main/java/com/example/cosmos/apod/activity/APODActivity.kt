@@ -52,7 +52,7 @@ class APODActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.activity_apod_menu, menu)
+        inflater.inflate(R.menu.menu_apod_activity, menu)
         return true
     }
 

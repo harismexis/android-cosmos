@@ -5,7 +5,7 @@
     <string name="date">Date</string>
 
     <string name="activity_home_label">Explore NASA</string>
-    <string name="activity_apod_label">Astronomy Picture of the day</string>
+    <string name="activity_apod_label">Picture of the day</string>
     <string name="activity_mrp_label">Mars Rover Photos</string>
 
     <string name="vh_home_apod_title">Astronomy Picture of the day</string>
