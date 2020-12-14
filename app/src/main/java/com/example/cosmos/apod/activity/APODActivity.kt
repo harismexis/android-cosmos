@@ -12,7 +12,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.Nullable
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
@@ -23,13 +23,13 @@ import com.example.cosmos.apod.repository.APODRepo
 import com.example.cosmos.apod.viewmodel.APODVm
 import com.example.cosmos.databinding.ActivityApodBinding
 import com.example.cosmos.databinding.ApodViewBinding
+import com.example.cosmos.workshared.activity.BaseActivity
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-class APODActivity : AppCompatActivity() {
+class APODActivity : BaseActivity() {
 
     private lateinit var picker: DatePickerDialog
     private lateinit var viewModel: APODVm
@@ -44,10 +44,33 @@ class APODActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initialiseViewBinding()
-        setContentView(binding.root)
-        initialiseViewModel()
+        setupActionBar()
         observeLiveData()
+    }
+
+    override fun initialiseViewBinding() {
+        binding = ActivityApodBinding.inflate(layoutInflater)
+        apodBinding = binding.apodContainer
+    }
+
+    override fun getRootView(): View {
+        return binding.root
+    }
+
+    override fun initialiseViewModel() {
+        viewModel = APODVm(
+            APODRepo(),
+            ConnectivityMonitor(applicationContext, ConnectivityRequestProvider())
+        )
+    }
+
+    override fun getToolbar(): Toolbar {
+        return binding.apodToolbar
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,18 +87,6 @@ class APODActivity : AppCompatActivity() {
         else -> {
             super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun initialiseViewBinding() {
-        binding = ActivityApodBinding.inflate(layoutInflater)
-        apodBinding = binding.apodContainer
-    }
-
-    private fun initialiseViewModel() {
-        viewModel = APODVm(
-            APODRepo(),
-            ConnectivityMonitor(applicationContext, ConnectivityRequestProvider())
-        )
     }
 
     private fun observeLiveData() {

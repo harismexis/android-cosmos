@@ -3,17 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background_color"
-    android:paddingStart="@dimen/activity_mrp_padding"
-    android:paddingEnd="@dimen/activity_mrp_padding">
+    android:background="@color/default_background_color">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mrp_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_left_white_rounded_24dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            style="@style/BaseTxtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/activity_mrp_label"
+            android:textSize="@dimen/small_txt" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMarsPhotos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_mrp_padding"
+        android:layout_marginEnd="@dimen/activity_mrp_padding"
         android:clipToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/mrp_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
