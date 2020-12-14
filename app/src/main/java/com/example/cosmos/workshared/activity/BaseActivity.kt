@@ -19,17 +19,16 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun getRootView(): View
 
+    abstract fun initialiseViewModel()
+
+    abstract fun getToolbar(): Toolbar?
+
     open fun initialiseView() {
         setupActionBar()
     }
-
-    abstract fun initialiseViewModel()
 
     open fun setupActionBar() {
         setSupportActionBar(getToolbar())
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
-
-    abstract fun getToolbar(): Toolbar
-
 }

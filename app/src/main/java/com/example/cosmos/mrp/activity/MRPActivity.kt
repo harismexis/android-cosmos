@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmos.databinding.ActivityMrpBinding
+import com.example.cosmos.mrp.activity.MRPDetailActivity.Companion.startMRPDetailActivity
 import com.example.cosmos.mrp.adapter.MRPItemAdapter
 import com.example.cosmos.mrp.model.ui.MRPItemModel
 import com.example.cosmos.mrp.repository.MRPRepo
@@ -90,7 +91,7 @@ class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
         item: MRPItemModel,
         position: Int
     ) {
-        startMRPDetailActivity()
+        this.startMRPDetailActivity()
     }
 
 }
