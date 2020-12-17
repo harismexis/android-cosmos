@@ -54,8 +54,7 @@ dependencies {
     implementation rxJavaDependencies.values()
     implementation koinAndroidDependencies.values()
     implementation koinAndroidXDependencies.values()
-
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    implementation soffrittiYouTubePlayer.values()
 
     debugImplementation librariesDebug.values()
 
