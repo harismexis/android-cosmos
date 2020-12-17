@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
@@ -24,17 +25,24 @@ import com.example.cosmos.apod.viewmodel.APODVm
 import com.example.cosmos.databinding.ActivityApodBinding
 import com.example.cosmos.databinding.ApodViewBinding
 import com.example.cosmos.workshared.activity.BaseActivity
+import com.example.cosmos.workshared.extensions.extractYouTubeVideoId
+import com.example.cosmos.workshared.extensions.hasHdUrl
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class APODActivity : BaseActivity() {
 
     private lateinit var picker: DatePickerDialog
     private lateinit var viewModel: APODVm
     private lateinit var binding: ActivityApodBinding
-    private lateinit var apodBinding: ApodViewBinding
+    private lateinit var apodView: ApodViewBinding
+
+    private var youTubePlayer: YouTubePlayer? = null
 
     companion object {
         fun Context.startAPODActivity() {
@@ -46,11 +54,12 @@ class APODActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setupActionBar()
         observeLiveData()
+        initialiseYouTubeView()
     }
 
     override fun initialiseViewBinding() {
         binding = ActivityApodBinding.inflate(layoutInflater)
-        apodBinding = binding.apodContainer
+        apodView = binding.apodContainer
     }
 
     override fun getRootView(): View {
@@ -97,9 +106,9 @@ class APODActivity : BaseActivity() {
 
     private fun getCalendar(): Calendar {
         val calendar: Calendar = Calendar.getInstance()
-        if (!apodBinding.txtDate.text.isNullOrBlank()) {
+        if (!apodView.txtDate.text.isNullOrBlank()) {
             val format = SimpleDateFormat("yyyy-MM-dd")
-            calendar.time = format.parse(apodBinding.txtDate.text.toString())
+            calendar.time = format.parse(apodView.txtDate.text.toString())
         }
         return calendar
     }
@@ -124,20 +133,55 @@ class APODActivity : BaseActivity() {
     }
 
     private fun updateUI(apod: APOD) {
-        apod.url?.let {
-            loadImage(it)
-        }
-        apodBinding.txtTitle.text = apod.title
-        apodBinding.txtDate.text = apod.date
-        apodBinding.txtExplanation.text = apod.explanation
-        apodBinding.txtServiceVersion.text = apod.serviceVersion
-        apodBinding.txtMediaType.text = apod.mediaType
-        binding.apodContainer.root.visibility = View.VISIBLE
+        populateMedia(apod)
+        apodView.txtTitle.text = apod.title
+        apodView.txtDate.text = apod.date
+        apodView.txtExplanation.text = apod.explanation
+        apodView.txtServiceVersion.text = apod.serviceVersion
+        apodView.txtMediaType.text = apod.mediaType
     }
 
-    private fun loadImage(imgUrl: String) {
-        apodBinding.imgApod.visibility = View.GONE
-        apodBinding.imgApodProgressView.visibility = View.VISIBLE
+    private fun populateMedia(apod: APOD) {
+        val hasHdUrl = apod.hasHdUrl()
+        onPrePopulateMedia(hasHdUrl)
+        if (hasHdUrl) {
+            apod.url?.let {
+                populateImage(it)
+            }
+        } else {
+            populateVideo(apod.url)
+        }
+    }
+
+    private fun populateVideo(url: String?) {
+        url.extractYouTubeVideoId()?.let { it ->
+            populateYoutubeView(it)
+        }
+    }
+
+    private fun initialiseYouTubeView() {
+        lifecycle.addObserver(apodView.youTubeView)
+        apodView.youTubeView
+            .initialize(object : AbstractYouTubePlayerListener() {
+                override fun onReady(@NonNull player: YouTubePlayer) {
+                    youTubePlayer = player
+                }
+            })
+    }
+
+    /**
+     * Example url of video file:
+     * https://www.youtube.com/embed/NuLuCeawQSo?rel=0
+     */
+    private fun populateYoutubeView(videoId: String) {
+        youTubePlayer?.loadVideo(videoId, 0f)
+        apodView.youTubeView.visibility = View.VISIBLE
+        apodView.imgProgressContainer.visibility = View.GONE
+        apodView.youTubeView
+    }
+
+    private fun populateImage(imgUrl: String) {
+        showImageProgress(true)
         Glide.with(this)
             .asBitmap()
             .load(Uri.parse(imgUrl))
@@ -147,15 +191,37 @@ class APODActivity : BaseActivity() {
                     resource: Bitmap,
                     transition: Transition<in Bitmap?>?
                 ) {
-                    apodBinding.imgApod.visibility = View.VISIBLE
-                    apodBinding.imgApod.setImageBitmap(resource)
-                    apodBinding.imgApodProgressView.visibility = View.GONE
+                    showImageProgress(false)
+                    apodView.imgApod.setImageBitmap(resource)
                 }
 
                 override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
             })
-
     }
 
+    private fun showImageProgress(show: Boolean) {
+        if (show) {
+            apodView.imgApod.visibility = View.GONE
+            apodView.imgProgressContainer.visibility = View.VISIBLE
+        } else {
+            apodView.imgApod.visibility = View.VISIBLE
+            apodView.imgProgressContainer.visibility = View.GONE
+        }
+    }
+
+    private fun onPrePopulateMedia(isImage: Boolean) {
+        if (isImage) {
+            youTubePlayer?.pause()
+            apodView.youTubeView.visibility = View.GONE
+        } else {
+            apodView.youTubeView.visibility = View.VISIBLE
+            hideImageContainer()
+        }
+    }
+
+    private fun hideImageContainer() {
+        apodView.imgProgressContainer.visibility = View.GONE
+        apodView.imgApod.visibility = View.GONE
+    }
 
 }
