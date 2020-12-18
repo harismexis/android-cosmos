@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/apod_root_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/default_background_color"
     android:padding="@dimen/apod_view_padding">
-
-    <!--    <WebView-->
-    <!--        android:id="@+id/apod_web_view"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        tools:ignore="WebViewLayout" />-->
-
-    <!--    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
-    <!--        android:id="@+id/youtube_player_view"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:visibility="invisible"-->
-    <!--        app:autoPlay="false"-->
-    <!--        app:enableAutomaticInitialization="false"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:useWebUi="false" />-->
 
     <FrameLayout
         android:id="@+id/imgApodContainer"
@@ -50,7 +27,7 @@
         <ImageView
             android:id="@+id/imgApod"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:visibility="gone" />
