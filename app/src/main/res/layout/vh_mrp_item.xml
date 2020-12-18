@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/imgPhoto"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="260dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop" />
