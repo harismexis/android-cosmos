@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/mrp_item_padding">
@@ -7,32 +8,34 @@
     <ImageView
         android:id="@+id/imgPhoto"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="@dimen/mrp_item_img_height"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
+        android:id="@+id/vh_mrp_item_meta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_below="@+id/imgPhoto">
+        android:layout_below="@+id/imgPhoto"
+        android:layout_marginStart="@dimen/mrp_item_meta_margin_horizontal"
+        android:layout_marginTop="@dimen/mrp_item_meta_margin_top"
+        android:layout_marginEnd="@dimen/mrp_item_meta_margin_horizontal">
 
         <TextView
             android:id="@+id/txtDate"
             style="@style/MiniTitleTxtv"
-            android:layout_margin="0dp"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:layout_margin="0dp" />
 
         <TextView
             android:id="@+id/txtID"
             style="@style/MiniMetaTxtv"
-            android:layout_margin="0dp"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:layout_margin="0dp" />
 
     </RelativeLayout>
 
