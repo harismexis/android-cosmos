@@ -28,7 +28,7 @@ class APODHomeVh(
         position: Int
     ) {
         super.bind(rowType, position)
-        viewModel.getAPOD(
+        viewModel.getHomeAPOD(
             { updateUI(it) },
             { Log.d(TAG, it.getErrorMessage()) }
         )

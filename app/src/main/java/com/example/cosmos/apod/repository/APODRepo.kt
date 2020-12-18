@@ -41,7 +41,7 @@ open class APODRepo {
     }
 
     suspend fun getAPODToday(): APOD? {
-        return getAPOD(null, true)
+        return getAPOD(null, false)
     }
 
     suspend fun getAPODByDate(

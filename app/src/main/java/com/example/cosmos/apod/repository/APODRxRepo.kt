@@ -18,8 +18,10 @@ class APODRxRepo : APODRepo() {
             .build()
     }
 
-    fun getAPODSingle(): Single<APOD?> {
-        return getAPODSingle(null, true)
+    fun getAPODSingle(
+        dateOfApod: String?
+    ): Single<APOD?> {
+        return getAPODSingle(dateOfApod, true)
     }
 
     private fun getAPODSingle(

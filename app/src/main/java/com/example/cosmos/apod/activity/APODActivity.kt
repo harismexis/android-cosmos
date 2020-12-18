@@ -27,12 +27,12 @@ import com.example.cosmos.databinding.ApodViewBinding
 import com.example.cosmos.workshared.activity.BaseActivity
 import com.example.cosmos.workshared.extensions.extractYouTubeVideoId
 import com.example.cosmos.workshared.extensions.hasHdUrl
+import com.example.cosmos.workshared.util.datepicker.showDatePicker
+import com.example.cosmos.workshared.util.general.getAPODFormattedDate
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
 import com.example.cosmos.workshared.util.network.ConnectivityRequestProvider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class APODActivity : BaseActivity() {
@@ -90,7 +90,12 @@ class APODActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.choose_date -> {
-            showDatePicker()
+            showDatePicker(
+                this, apodView.txtDate.text.toString()
+            ) { year, month, day ->
+                val date = getAPODFormattedDate(year, month, day)
+                viewModel.fetchAPODByDate(date)
+            }
             true
         }
         else -> {
@@ -102,34 +107,6 @@ class APODActivity : BaseActivity() {
         viewModel.apod.observe(this, {
             updateUI(it)
         })
-    }
-
-    private fun getCalendar(): Calendar {
-        val calendar: Calendar = Calendar.getInstance()
-        if (!apodView.txtDate.text.isNullOrBlank()) {
-            val format = SimpleDateFormat("yyyy-MM-dd")
-            calendar.time = format.parse(apodView.txtDate.text.toString())
-        }
-        return calendar
-    }
-
-    private fun showDatePicker() {
-        val calendar = getCalendar()
-        val year: Int = calendar.get(Calendar.YEAR)
-        val month: Int = calendar.get(Calendar.MONTH)
-        val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
-        picker = DatePickerDialog(
-            this@APODActivity,
-            { _, yearOf, monthOfYear, dayOfMonth ->
-                val date = yearOf.toString() + "-" + (monthOfYear + 1) + "-" + dayOfMonth
-                viewModel.fetchAPODByDate(date)
-            },
-            year,
-            month,
-            day
-        )
-        picker.datePicker.maxDate = Calendar.getInstance().timeInMillis
-        picker.show()
     }
 
     private fun updateUI(apod: APOD) {
@@ -145,7 +122,7 @@ class APODActivity : BaseActivity() {
         val hasHdUrl = apod.hasHdUrl()
         onPrePopulateMedia(hasHdUrl)
         if (hasHdUrl) {
-            apod.url?.let {
+            apod.hdurl?.let {
                 populateImage(it)
             }
         } else {
@@ -185,7 +162,7 @@ class APODActivity : BaseActivity() {
         Glide.with(this)
             .asBitmap()
             .load(Uri.parse(imgUrl))
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(object : CustomTarget<Bitmap?>() {
                 override fun onResourceReady(
                     resource: Bitmap,
@@ -215,11 +192,11 @@ class APODActivity : BaseActivity() {
             apodView.youTubeView.visibility = View.GONE
         } else {
             apodView.youTubeView.visibility = View.VISIBLE
-            hideImageContainer()
+            hideImageView()
         }
     }
 
-    private fun hideImageContainer() {
+    private fun hideImageView() {
         apodView.imgProgressContainer.visibility = View.GONE
         apodView.imgApod.visibility = View.GONE
     }
