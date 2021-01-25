@@ -12,20 +12,25 @@ import io.reactivex.disposables.CompositeDisposable
 class APODEntryVm(
     var apodRepo: APODRxRepo
 ) {
-    private val TAG = APODEntryVm::class.qualifiedName
+
+    companion object {
+        private const val HOME_DATE = "2020-12-18"
+    }
+
+    private val tag = APODEntryVm::class.qualifiedName
     private val disposables = CompositeDisposable()
 
-    fun getAPOD(
+    fun getHomeAPOD(
         onSuccess: Action1<APOD>,
         onError: Action1<Throwable>
     ) {
-        disposables.add(apodRepo.getAPODSingle()
+        disposables.add(apodRepo.getAPODSingle(HOME_DATE)
             .compose(setSchedulersSingle(SchedulerProvider()))
             .doOnSuccess {
                 onSuccess.call(it)
             }
             .doOnError {
-                Log.d(TAG, it.getErrorMessage())
+                Log.d(tag, it.getErrorMessage())
                 onError.call(it)
             }
             .subscribe())

@@ -15,16 +15,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youTube_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:autoPlay="false"
+            app:enableAutomaticInitialization="false"
+            app:useWebUi="false" />
+
         <ImageView
             android:id="@+id/imgApod"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:visibility="gone" />
 
         <RelativeLayout
-            android:id="@+id/imgApodProgressView"
+            android:id="@+id/imgProgressContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="300dp">

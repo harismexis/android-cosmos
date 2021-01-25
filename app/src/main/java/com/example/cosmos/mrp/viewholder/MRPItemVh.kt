@@ -15,7 +15,7 @@ class MRPItemVh(
     private var itemClickListener: MRPItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    private val TAG = MRPItemVh::class.qualifiedName
+    private val tag = MRPItemVh::class.qualifiedName
 
     interface MRPItemClickListener {
         fun onMRPItemClick(item: MRPItemModel, position: Int)

@@ -21,16 +21,16 @@ class APODHomeVh(
     rowClickListener: HomeClickListener
 ) : BaseHomeVh(viewBinding, rowClickListener) {
 
-    private val TAG = APODHomeVh::class.qualifiedName
+    private val tag = APODHomeVh::class.qualifiedName
 
     override fun bind(
         rowType: RowType,
         position: Int
     ) {
         super.bind(rowType, position)
-        viewModel.getAPOD(
+        viewModel.getHomeAPOD(
             { updateUI(it) },
-            { Log.d(TAG, it.getErrorMessage()) }
+            { Log.d(tag, it.getErrorMessage()) }
         )
     }
 

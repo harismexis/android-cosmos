@@ -41,13 +41,13 @@ open class APODRepo {
     }
 
     suspend fun getAPODToday(): APOD? {
-        return getAPOD(null, true)
+        return getAPOD(null, false)
     }
 
     suspend fun getAPODByDate(
         dateOfApod: String?
     ): APOD? {
-        return api.getAPOD(dateOfApod, true, BuildConfig.NASA_API_KEY)
+        return api.getAPOD(dateOfApod, false, BuildConfig.NASA_API_KEY)
     }
 
     private suspend fun getAPOD(
