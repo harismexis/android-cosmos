@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmos.databinding.ActivityMrpBinding
 import com.example.cosmos.mrp.activity.MRPDetailActivity.Companion.startMRPDetailActivity
@@ -59,7 +58,7 @@ class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
         )
     }
 
-    override fun getToolbar(): Toolbar {
+    override fun getToolbar(): androidx.appcompat.widget.Toolbar {
         return binding.mrpToolbar
     }
 
@@ -71,8 +70,8 @@ class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
     private fun initRecycler() {
         adapter = MRPItemAdapter(mrpItems, this)
         adapter.setHasStableIds(true)
-        binding.rvMarsPhotos.layoutManager = LinearLayoutManager(this)
-        binding.rvMarsPhotos.adapter = adapter
+        binding.rvList.layoutManager = LinearLayoutManager(this)
+        binding.rvList.adapter = adapter
     }
 
     private fun observeLiveData() {
