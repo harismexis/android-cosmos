@@ -25,11 +25,8 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- GOOD POINT : recyclerView needs
-    android:layout_height="0dp" & app:layout_constraintBottom_toBottomOf="parent"
-    otherwise last item cut off  -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMarsPhotos"
+        android:id="@+id/rv_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
@@ -37,5 +34,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mrp_toolbar" />
+    <!-- GOOD POINT : recyclerView needs -->
+    <!-- android:layout_height="0dp" & app:layout_constraintBottom_toBottomOf="parent" -->
+    <!-- otherwise last item cut off  -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

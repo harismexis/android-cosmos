@@ -10,7 +10,6 @@ import com.example.cosmos.mrp.model.ui.MRPItemModel
 import com.example.cosmos.mrp.repository.MRPRepo
 import com.example.cosmos.workshared.extensions.getErrorMessage
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MRPVm(
@@ -19,20 +18,13 @@ class MRPVm(
 ) : ViewModel() {
 
     private val TAG = MRPVm::class.qualifiedName
-    private var jobGetMrp: Job? = null
 
     private val mModels = MutableLiveData<List<MRPItemModel>>()
     val models: LiveData<List<MRPItemModel>>
         get() = mModels
 
-    override fun onCleared() {
-        super.onCleared()
-        jobGetMrp?.cancel()
-        jobGetMrp = null
-    }
-
     fun fetchCuriosityLatestMRP() {
-        jobGetMrp = viewModelScope.launch {
+        viewModelScope.launch {
             try {
                 val response = marsRepo.getCuriosityLatestMRP()
                 mModels.value = response.toUiModel().mrpItems
