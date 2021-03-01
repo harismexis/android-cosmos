@@ -9,7 +9,6 @@ import com.example.cosmos.apod.model.APOD
 import com.example.cosmos.apod.repository.APODRepo
 import com.example.cosmos.workshared.extensions.getErrorMessage
 import com.example.cosmos.workshared.util.network.ConnectivityMonitor
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class APODVm(
@@ -18,7 +17,6 @@ class APODVm(
 ) : ViewModel() {
 
     private val TAG = APODVm::class.qualifiedName
-    private var jobFetchAPOD: Job? = null
 
     private val mApod = MutableLiveData<APOD>()
     val apod: LiveData<APOD>
@@ -28,14 +26,8 @@ class APODVm(
         fetchAPODToday()
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        jobFetchAPOD?.cancel()
-        jobFetchAPOD = null
-    }
-
     private fun fetchAPODToday() {
-        jobFetchAPOD = viewModelScope.launch {
+        viewModelScope.launch {
             try {
                 mApod.value = apodRepo.getAPODToday()
             } catch (e: Exception) {
@@ -45,8 +37,7 @@ class APODVm(
     }
 
     fun fetchAPODByDate(date: String) {
-        jobFetchAPOD?.cancel()
-        jobFetchAPOD = viewModelScope.launch {
+        viewModelScope.launch {
             try {
                 mApod.value = apodRepo.getAPODByDate(date)
             } catch (e: Exception) {
