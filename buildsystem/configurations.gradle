@@ -2,7 +2,7 @@ ext {
 
     common = [
             // put your key here
-            NASA_API_KEY : '\"' + "Yncc63cEXKWLYQbhloAc3cIl9fdqzO2rOrdsVYbN" + '\"',
+            NASA_API_KEY : '\"' + "" + '\"',
             APOD_BASE_URL : '\"' + "https://api.nasa.gov/planetary/" + '\"',
             MRP_BASE_URL : '\"' + "https://api.nasa.gov/mars-photos/api/v1/rovers/" + '\"'
     ]
