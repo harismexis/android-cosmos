@@ -32,10 +32,7 @@ class NIAVLRepo @Inject constructor(
     }
 
     suspend fun search(query: String): NIAVLResponse? {
-        return api.search(
-            query
-            //, BuildConfig.NASA_API_KEY
-        )
+        return api.search(query)
     }
 
 }

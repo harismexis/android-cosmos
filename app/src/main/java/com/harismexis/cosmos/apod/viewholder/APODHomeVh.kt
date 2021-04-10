@@ -1,11 +1,6 @@
 package com.harismexis.cosmos.apod.viewholder
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.util.Log
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.apod.model.APOD
 import com.harismexis.cosmos.apod.viewmodel.APODEntryVm
@@ -14,6 +9,7 @@ import com.harismexis.cosmos.home.interfaces.HomeClickListener
 import com.harismexis.cosmos.home.viewholder.BaseHomeVh
 import com.harismexis.cosmos.workshared.enums.RowType
 import com.harismexis.cosmos.workshared.extensions.getErrorMessage
+import com.harismexis.cosmos.workshared.extensions.populateWithGlide
 
 class APODHomeVh(
     private var viewBinding: VhHomeRowBinding,
@@ -35,18 +31,9 @@ class APODHomeVh(
     }
 
     private fun updateUI(item: APOD) {
-        populateImage(item.hdurl)
+        itemView.context.populateWithGlide(viewBinding.imgv, item.hdurl)
         viewBinding.txtTitle.text = itemView.context.getString(R.string.vh_home_apod_title)
         viewBinding.txtMeta.text = item.title
-    }
-
-    private fun populateImage(url: String?) {
-        Glide.with(itemView.context)
-            .load(Uri.parse(url))
-            .error(ColorDrawable(Color.BLACK))
-            .placeholder(R.drawable.loading_animation)
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-            .into(viewBinding.imgContainer)
     }
 
     override fun unbind() {

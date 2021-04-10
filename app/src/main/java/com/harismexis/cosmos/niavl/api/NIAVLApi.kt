@@ -15,6 +15,5 @@ interface NIAVLApi {
     @GET("search")
     suspend fun search(
         @Query("q") query: String
-        //, @Query("api_key") apiKey: String
     ): NIAVLResponse?
 }
