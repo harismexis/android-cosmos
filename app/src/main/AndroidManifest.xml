@@ -17,7 +17,7 @@
         <activity android:name=".workshared.activity.BaseActivity" />
 
         <activity
-            android:name=".home.activity.HomeActivity"
+            android:name=".workshared.activity.MainActivity"
             android:label="@string/activity_home_label"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -26,18 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".mrp.activity.MRPActivity"
-            android:label="@string/activity_mrp_label"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity
-            android:name=".apod.activity.APODActivity"
-            android:label="@string/activity_apod_label"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity android:name=".mrp.activity.MRPDetailActivity" />
 
     </application>
 

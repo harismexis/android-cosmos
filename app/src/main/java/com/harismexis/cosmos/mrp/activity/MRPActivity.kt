@@ -7,15 +7,11 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.cosmos.databinding.ActivityMrpBinding
+import com.harismexis.cosmos.mrp.adapter.MRPItemAdapter
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
-import com.harismexis.cosmos.mrp.repository.MRPRepo
 import com.harismexis.cosmos.mrp.viewholder.MRPItemVh
 import com.harismexis.cosmos.mrp.viewmodel.MRPVm
 import com.harismexis.cosmos.workshared.activity.BaseActivity
-import com.harismexis.cosmos.workshared.util.network.ConnectivityMonitor
-import com.harismexis.cosmos.workshared.util.network.ConnectivityRequestProvider
-import com.harismexis.cosmos.mrp.activity.MRPDetailActivity.Companion.startMRPDetailActivity
-import com.harismexis.cosmos.mrp.adapter.MRPItemAdapter
 
 /**
  * Activity showing a list of Mars Rover Photos (MRP)
@@ -53,7 +49,7 @@ class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
     }
 
     override fun getToolbar(): androidx.appcompat.widget.Toolbar {
-        return binding.mrpToolbar
+        return binding.toolbar
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -84,7 +80,7 @@ class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
         item: MRPItemModel,
         position: Int
     ) {
-        this.startMRPDetailActivity()
+
     }
 
 }

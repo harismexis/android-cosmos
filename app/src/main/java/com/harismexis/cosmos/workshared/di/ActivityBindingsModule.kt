@@ -3,7 +3,6 @@ package com.harismexis.cosmos.workshared.di
 import com.harismexis.cosmos.apod.activity.APODActivity
 import com.harismexis.cosmos.home.activity.HomeActivity
 import com.harismexis.cosmos.mrp.activity.MRPActivity
-import com.harismexis.cosmos.mrp.activity.MRPDetailActivity
 import com.harismexis.cosmos.workshared.activity.BaseActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -22,8 +21,5 @@ abstract class ActivityBindingsModule {
 
     @ContributesAndroidInjector
     abstract fun mrpActivity(): MRPActivity
-
-    @ContributesAndroidInjector
-    abstract fun mrpDetailActivity(): MRPDetailActivity
 
 }

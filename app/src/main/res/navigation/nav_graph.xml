@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/home_dest">
+
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="com.harismexis.cosmos.home.activity.HomeFragment"
+        app:defaultNavHost="true"
+        tools:layout="@layout/activity_home">
+
+        <action
+            android:id="@+id/action_home_dest_to_apod_dest"
+            app:destination="@id/apod_dest" />
+
+        <action
+            android:id="@+id/action_home_dest_to_mrp_dest"
+            app:destination="@id/mrp_dest" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/apod_dest"
+        android:name="com.harismexis.cosmos.apod.activity.APODFragment"
+        tools:layout="@layout/activity_apod"/>
+
+    <fragment
+        android:id="@+id/mrp_dest"
+        android:name="com.harismexis.cosmos.mrp.activity.MRPFragment"
+        tools:layout="@layout/activity_mrp"/>
+
+</navigation>

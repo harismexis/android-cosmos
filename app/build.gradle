@@ -53,8 +53,7 @@ dependencies {
     implementation libraries.values()
     implementation rxJavaDependencies.values()
     implementation daggerDependancies.values()
-    // implementation koinAndroidDependencies.values()
-    // implementation koinAndroidXDependencies.values()
+    implementation navigationDependencies.values()
     implementation soffrittiYouTubePlayer.values()
 
     debugImplementation librariesDebug.values()
