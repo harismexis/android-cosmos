@@ -1,6 +1,6 @@
 package com.harismexis.cosmos.niavl.api
 
-import com.harismexis.cosmos.niavl.model.NIAVLResponse
+import com.harismexis.cosmos.niavl.model.remote.NIAVLResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

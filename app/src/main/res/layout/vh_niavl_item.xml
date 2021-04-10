@@ -27,15 +27,6 @@
             android:id="@+id/txt1"
             style="@style/MiniTitleTxtv"
             android:layout_alignParentStart="true"
-            android:text="hello"
-            android:layout_centerVertical="true"
-            android:layout_margin="0dp" />
-
-        <TextView
-            android:id="@+id/txt2"
-            style="@style/MiniMetaTxtv"
-            android:text="hello"
-            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="0dp" />
 

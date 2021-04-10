@@ -7,33 +7,31 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.harismexis.cosmos.databinding.VhNiavlItemBinding
-import com.harismexis.cosmos.niavl.model.NIAVLCollectionItem
+import com.harismexis.cosmos.niavl.model.ui.NIAVLUiModel
 
 class NIAVLItemVh(
     private var binding: VhNiavlItemBinding,
-    private var itemClickListener: NIAVLItemVh.NIAVLItemClickListener
+    private var itemClickListener: NIAVLItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private val tag = NIAVLItemVh::class.qualifiedName
 
     interface NIAVLItemClickListener {
-        fun onNIAVLItemClick(item: NIAVLCollectionItem, position: Int)
+        fun onNIAVLItemClick(item: NIAVLUiModel, position: Int)
     }
 
     fun bind(
-        item: NIAVLCollectionItem,
+        item: NIAVLUiModel,
         position: Int
     ) {
-        populateImage(item.href)
-//        binding.txt1.text = item.earthDate.toString()
-//        binding.txt2.text = itemView.context.getString(R.string.vh_mrp_item_id_txt, item.id)
+        populateImage(item.thumbUrl)
+        binding.txt1.text = item.title
         binding.root.setOnClickListener {
             itemClickListener.onNIAVLItemClick(item, position)
         }
     }
 
     private fun populateImage(url: String?) {
-        binding.imgPhoto.layout(0, 0, 0, 0)
         Glide.with(itemView.context)
             .load(Uri.parse(url))
             .override(binding.imgPhoto.height)

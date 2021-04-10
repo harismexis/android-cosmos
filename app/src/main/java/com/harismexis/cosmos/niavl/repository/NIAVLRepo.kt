@@ -3,7 +3,7 @@ package com.harismexis.cosmos.niavl.repository
 import com.google.gson.Gson
 import com.harismexis.cosmos.BuildConfig
 import com.harismexis.cosmos.niavl.api.NIAVLApi
-import com.harismexis.cosmos.niavl.model.NIAVLResponse
+import com.harismexis.cosmos.niavl.model.remote.NIAVLResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

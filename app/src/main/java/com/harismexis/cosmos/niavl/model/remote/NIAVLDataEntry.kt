@@ -1,8 +1,8 @@
-package com.harismexis.cosmos.niavl.model
+package com.harismexis.cosmos.niavl.model.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class NIAVLCollectionItemDataEntry(
+data class NIAVLDataEntry(
     val center: String?, // "JSC",
     val title: String?, // "JSC-Orion-2021-GA_infographic_animation4k",
     val description: String?, // "Orion split apart animation showing the Launch Abort System, Crew Module, and Service Module. Artemis I configuration.",

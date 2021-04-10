@@ -34,7 +34,6 @@ class MRPItemVh(
     }
 
     private fun populateImage(url: String?) {
-        binding.imgPhoto.layout(0, 0, 0, 0)
         Glide.with(itemView.context)
             .load(Uri.parse(url))
             .override(binding.imgPhoto.height)

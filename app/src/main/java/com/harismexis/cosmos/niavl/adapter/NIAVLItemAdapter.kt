@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.cosmos.databinding.VhNiavlItemBinding
-import com.harismexis.cosmos.niavl.model.NIAVLCollectionItem
+import com.harismexis.cosmos.niavl.model.ui.NIAVLUiModel
 import com.harismexis.cosmos.niavl.viewholder.NIAVLItemVh
 
 class NIAVLItemAdapter(
-    private var models: List<NIAVLCollectionItem>,
+    private var models: List<NIAVLUiModel>,
     private var itemClickListener: NIAVLItemVh.NIAVLItemClickListener
 ) : RecyclerView.Adapter<NIAVLItemVh>() {
 

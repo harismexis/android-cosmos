@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.databinding.FragmentNiavlBinding
 import com.harismexis.cosmos.niavl.adapter.NIAVLItemAdapter
-import com.harismexis.cosmos.niavl.model.NIAVLCollectionItem
+import com.harismexis.cosmos.niavl.model.ui.NIAVLUiModel
 import com.harismexis.cosmos.niavl.viewholder.NIAVLItemVh
 import com.harismexis.cosmos.niavl.viewmodel.NIAVLVm
 import com.harismexis.cosmos.workshared.activity.BaseFragment
@@ -26,11 +26,10 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
     private val viewModel: NIAVLVm by viewModels { viewModelFactory }
     private var binding: FragmentNiavlBinding? = null
     private lateinit var rvAdapter: NIAVLItemAdapter
-    private var uiModels: MutableList<NIAVLCollectionItem> = mutableListOf()
+    private var uiModels: MutableList<NIAVLUiModel> = mutableListOf()
 
     override fun onViewCreated() {
         observeLiveData()
-        viewModel.fetchCuriosityLatestMRP()
     }
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
@@ -75,7 +74,7 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
         })
     }
 
-    private fun updateUI(models: List<NIAVLCollectionItem>) {
+    private fun updateUI(models: List<NIAVLUiModel>) {
         binding?.apply {
             progressBar.visibility = View.GONE
             rvList.visibility = View.VISIBLE
@@ -85,16 +84,11 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
         rvAdapter.notifyDataSetChanged()
     }
 
-//    override fun onMRPItemClick(
-//        item: MRPUiModel,
-//        position: Int
-//    ) {
-//
-//    }
-
     override fun onQueryTextSubmit(query: String?): Boolean {
         requireActivity().hideKeyboard()
-        //viewModel.searchQuery = query
+        query?.let {
+            viewModel.searchNIAVL(it)
+        }
         return false
     }
 
@@ -102,7 +96,7 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
         return false
     }
 
-    override fun onNIAVLItemClick(item: NIAVLCollectionItem, position: Int) {
+    override fun onNIAVLItemClick(item: NIAVLUiModel, position: Int) {
 
     }
 
