@@ -1,7 +1,9 @@
 package com.harismexis.cosmos.workshared.activity
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.harismexis.cosmos.R
@@ -20,6 +22,17 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = host.navController
         appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupDestinationListener(navController)
     }
 
+    private fun setupDestinationListener(navController: NavController) {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            requestedOrientation = if (destination.id == R.id.apod_player_dest) {
+                ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+            } else {
+                ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            }
+
+        }
+    }
 }

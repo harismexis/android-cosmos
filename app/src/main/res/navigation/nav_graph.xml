@@ -23,7 +23,28 @@
     <fragment
         android:id="@+id/apod_dest"
         android:name="com.harismexis.cosmos.apod.fragment.APODFragment"
-        tools:layout="@layout/fragment_apod"/>
+        tools:layout="@layout/fragment_apod">
+
+        <action
+            android:id="@+id/action_apod_dest_to_player_dest"
+            app:destination="@id/apod_player_dest" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/apod_player_dest"
+        android:name="com.harismexis.cosmos.apod.fragment.APODPlayerFragment"
+        tools:layout="@layout/fragment_apod_player">
+
+        <argument
+            android:name="apodVideoId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_exit"
+            app:popUpTo="@+id/apod_dest" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/mrp_dest"

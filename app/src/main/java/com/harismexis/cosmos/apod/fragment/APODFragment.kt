@@ -117,6 +117,7 @@ class APODFragment : BaseFragment() {
 
     private fun initialiseYouTubeView() {
         apodView?.youTubeView?.let {
+            it.getPlayerUiController().showFullscreenButton(false)
             lifecycle.addObserver(it)
             it.initialize(object : AbstractYouTubePlayerListener() {
                 override fun onReady(@NonNull player: YouTubePlayer) {
@@ -135,6 +136,18 @@ class APODFragment : BaseFragment() {
         apodView?.apply {
             youTubeView.visibility = View.VISIBLE
             imgProgressContainer.visibility = View.GONE
+        }
+        initFullScreenButton(videoId)
+    }
+
+    private fun initFullScreenButton(videoId: String) {
+        apodView?.let {
+            it.youTubeView.getPlayerUiController().showFullscreenButton(true)
+            it.youTubeView.getPlayerUiController()
+                .setFullScreenButtonClickListener {
+                    val action = APODFragmentDirections.actionApodDestToPlayerDest(videoId)
+                    findNavController().navigate(action)
+                }
         }
     }
 

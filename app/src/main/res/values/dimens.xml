@@ -21,6 +21,10 @@
     <dimen name="apod_home_row_root_padding">10dp</dimen>
     <dimen name="apod_view_padding">10dp</dimen>
 
+    <!-- APOD Player -->
+    <dimen name="player_back_icon_margin_start">10dp</dimen>
+    <dimen name="player_back_icon_margin_top">10dp</dimen>
+
     <!-- MRP -->
     <dimen name="activity_mrp_detail_padding">6dp</dimen>
     <dimen name="mrp_home_img_size">100dp</dimen>
