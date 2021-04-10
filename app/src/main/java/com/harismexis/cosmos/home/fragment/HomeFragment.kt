@@ -1,4 +1,4 @@
-package com.harismexis.cosmos.home.activity
+package com.harismexis.cosmos.home.fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.cosmos.R
-import com.harismexis.cosmos.databinding.ActivityHomeBinding
+import com.harismexis.cosmos.databinding.FragmentHomeBinding
 import com.harismexis.cosmos.home.adapter.HomeAdapter
 import com.harismexis.cosmos.home.interfaces.HomeClickListener
 import com.harismexis.cosmos.home.viewmodel.HomeVm
@@ -17,11 +17,11 @@ import com.harismexis.cosmos.workshared.enums.RowType
 class HomeFragment : BaseFragment(), HomeClickListener {
 
     private val viewModel: HomeVm by viewModels { viewModelFactory }
-    private var binding: ActivityHomeBinding? = null
+    private var binding: FragmentHomeBinding? = null
     private lateinit var adapter: HomeAdapter
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = ActivityHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
     }
 
     override fun getRootView(): View? {

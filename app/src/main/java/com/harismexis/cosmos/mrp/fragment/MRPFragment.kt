@@ -1,4 +1,4 @@
-package com.harismexis.cosmos.mrp.activity
+package com.harismexis.cosmos.mrp.fragment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.cosmos.R
-import com.harismexis.cosmos.databinding.ActivityMrpBinding
+import com.harismexis.cosmos.databinding.FragmentMrpBinding
 import com.harismexis.cosmos.mrp.adapter.MRPItemAdapter
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
 import com.harismexis.cosmos.mrp.viewholder.MRPItemVh
@@ -22,7 +22,7 @@ import com.harismexis.cosmos.workshared.activity.BaseFragment
 class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
 
     private val viewModel: MRPVm by viewModels { viewModelFactory }
-    private var binding: ActivityMrpBinding? = null
+    private var binding: FragmentMrpBinding? = null
     private lateinit var adapter: MRPItemAdapter
     private var mrpItems: MutableList<MRPItemModel> = mutableListOf()
 
@@ -32,7 +32,7 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
     }
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = ActivityMrpBinding.inflate(inflater, container, false)
+        binding = FragmentMrpBinding.inflate(inflater, container, false)
     }
 
     override fun getRootView(): View? {

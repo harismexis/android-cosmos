@@ -1,4 +1,4 @@
-package com.harismexis.cosmos.apod.activity
+package com.harismexis.cosmos.apod.fragment
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -19,8 +19,8 @@ import com.bumptech.glide.request.transition.Transition
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.apod.model.APOD
 import com.harismexis.cosmos.apod.viewmodel.APODVm
-import com.harismexis.cosmos.databinding.ActivityApodBinding
 import com.harismexis.cosmos.databinding.ApodViewBinding
+import com.harismexis.cosmos.databinding.FragmentApodBinding
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 import com.harismexis.cosmos.workshared.extensions.extractYouTubeVideoId
 import com.harismexis.cosmos.workshared.extensions.hasHdUrl
@@ -32,7 +32,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 class APODFragment : BaseFragment() {
 
     private val viewModel: APODVm by viewModels { viewModelFactory }
-    private var binding: ActivityApodBinding? = null
+    private var binding: FragmentApodBinding? = null
     private var apodView: ApodViewBinding? = null
 
     private var youTubePlayer: YouTubePlayer? = null
@@ -42,7 +42,7 @@ class APODFragment : BaseFragment() {
     }
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = ActivityApodBinding.inflate(layoutInflater)
+        binding = FragmentApodBinding.inflate(layoutInflater)
         apodView = binding?.apodContainer
     }
 
