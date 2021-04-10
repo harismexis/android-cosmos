@@ -8,15 +8,8 @@ import com.harismexis.cosmos.mrp.model.ui.MRPUiModel
 private val TAG = "MRPExtensions"
 
 fun LatestMRP?.toUiModels(): List<MRPUiModel> {
-    this?.let {
-        return it.latest_photos.toUiModels()
-    }
-    throw IllegalStateException("Error parsing Latest MRP response")
-}
-
-fun MutableList<MRPItem?>?.toUiModels(): List<MRPUiModel> {
     val models: MutableList<MRPUiModel> = mutableListOf()
-    this?.let {
+    this?.latest_photos?.let {
         for (item in it) {
             if (!item.isValid()) Log.d(TAG, "MRP item is null or missing id / imgSrc")
             else {
