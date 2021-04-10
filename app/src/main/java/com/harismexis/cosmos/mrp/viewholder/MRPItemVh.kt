@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.databinding.VhMrpItemBinding
-import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
+import com.harismexis.cosmos.mrp.model.ui.MRPUiModel
 
 class MRPItemVh(
     private var binding: VhMrpItemBinding,
@@ -18,11 +18,11 @@ class MRPItemVh(
     private val tag = MRPItemVh::class.qualifiedName
 
     interface MRPItemClickListener {
-        fun onMRPItemClick(item: MRPItemModel, position: Int)
+        fun onMRPItemClick(item: MRPUiModel, position: Int)
     }
 
     fun bind(
-        item: MRPItemModel,
+        item: MRPUiModel,
         position: Int
     ) {
         populateImage(item.imgSrc)

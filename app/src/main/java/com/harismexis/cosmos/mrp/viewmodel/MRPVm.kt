@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.harismexis.cosmos.mrp.extensions.toUiModels
-import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
+import com.harismexis.cosmos.mrp.model.ui.MRPUiModel
 import com.harismexis.cosmos.mrp.repository.MRPRepo
 import com.harismexis.cosmos.workshared.extensions.getErrorMessage
 import kotlinx.coroutines.launch
@@ -18,8 +18,8 @@ class MRPVm @Inject constructor (
 
     private val TAG = MRPVm::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<MRPItemModel>>()
-    val models: LiveData<List<MRPItemModel>>
+    private val mModels = MutableLiveData<List<MRPUiModel>>()
+    val models: LiveData<List<MRPUiModel>>
         get() = mModels
 
     fun fetchCuriosityLatestMRP() {

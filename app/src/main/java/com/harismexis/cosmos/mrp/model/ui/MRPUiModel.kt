@@ -7,7 +7,7 @@ import java.util.*
 /**
  * Model for a Mars Rover Photo Item
  */
-data class MRPItemModel(
+data class MRPUiModel(
     var id: Int,
     var sol: Int?,
     var camera: Camera?,

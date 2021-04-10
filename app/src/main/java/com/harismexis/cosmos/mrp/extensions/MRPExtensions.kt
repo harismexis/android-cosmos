@@ -3,26 +3,25 @@ package com.harismexis.cosmos.mrp.extensions
 import android.util.Log
 import com.harismexis.cosmos.mrp.model.response.LatestMRP
 import com.harismexis.cosmos.mrp.model.response.MRPItem
-import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
+import com.harismexis.cosmos.mrp.model.ui.MRPUiModel
 
 private val TAG = "MRPExtensions"
 
-fun LatestMRP?.toUiModels(): List<MRPItemModel> {
+fun LatestMRP?.toUiModels(): List<MRPUiModel> {
     this?.let {
         return it.latest_photos.toUiModels()
     }
     throw IllegalStateException("Error parsing Latest MRP response")
 }
 
-fun MutableList<MRPItem?>?.toUiModels(): List<MRPItemModel> {
+fun MutableList<MRPItem?>?.toUiModels(): List<MRPUiModel> {
+    val models: MutableList<MRPUiModel> = mutableListOf()
     this?.let {
-        val models: MutableList<MRPItemModel> = mutableListOf()
         for (item in it) {
-            if (!item.isValid()) {
-                Log.d(TAG, "MRP item is null or missing id / imgSrc")
-            } else {
+            if (!item.isValid()) Log.d(TAG, "MRP item is null or missing id / imgSrc")
+            else {
                 models.add(
-                    MRPItemModel(
+                    MRPUiModel(
                         item!!.id!!,
                         item.sol,
                         item.camera,
@@ -33,9 +32,8 @@ fun MutableList<MRPItem?>?.toUiModels(): List<MRPItemModel> {
                 )
             }
         }
-        return models
     }
-    throw IllegalStateException("Error parsing MRPResponse")
+    return models.toList()
 }
 
 fun MRPItem?.isValid(): Boolean {

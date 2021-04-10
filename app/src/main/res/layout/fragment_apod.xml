@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@string/activity_apod_label"
+                android:text="@string/apod_label"
                 android:textSize="@dimen/small_txt" />
 
         </androidx.appcompat.widget.Toolbar>

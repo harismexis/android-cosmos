@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.harismexis.cosmos.databinding.VhMrpItemBinding
-import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
+import com.harismexis.cosmos.mrp.model.ui.MRPUiModel
 import com.harismexis.cosmos.mrp.viewholder.MRPItemVh
 
 class MRPItemAdapter(
-    private var models: List<MRPItemModel>,
+    private var models: List<MRPUiModel>,
     private var itemClickListener: MRPItemVh.MRPItemClickListener
 ) : RecyclerView.Adapter<MRPItemVh>() {
 

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.databinding.FragmentMrpBinding
 import com.harismexis.cosmos.mrp.adapter.MRPItemAdapter
-import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
+import com.harismexis.cosmos.mrp.model.ui.MRPUiModel
 import com.harismexis.cosmos.mrp.viewholder.MRPItemVh
 import com.harismexis.cosmos.mrp.viewmodel.MRPVm
 import com.harismexis.cosmos.workshared.activity.BaseFragment
@@ -24,7 +24,7 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
     private val viewModel: MRPVm by viewModels { viewModelFactory }
     private var binding: FragmentMrpBinding? = null
     private lateinit var rvAdapter: MRPItemAdapter
-    private var mrpItems: MutableList<MRPItemModel> = mutableListOf()
+    private var uiModels: MutableList<MRPUiModel> = mutableListOf()
 
     override fun onViewCreated() {
         observeLiveData()
@@ -54,7 +54,7 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
     }
 
     private fun initRecycler() {
-        rvAdapter = MRPItemAdapter(mrpItems, this)
+        rvAdapter = MRPItemAdapter(uiModels, this)
         rvAdapter.setHasStableIds(true)
         binding?.rvList?.apply {
             layoutManager = LinearLayoutManager(requireActivity())
@@ -68,18 +68,18 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
         })
     }
 
-    private fun updateUI(uiModel: List<MRPItemModel>) {
+    private fun updateUI(models: List<MRPUiModel>) {
         binding?.apply {
             progressBar.visibility = View.GONE
             rvList.visibility = View.VISIBLE
         }
-        mrpItems.clear()
-        mrpItems.addAll(uiModel)
+        this.uiModels.clear()
+        this.uiModels.addAll(models)
         rvAdapter.notifyDataSetChanged()
     }
 
     override fun onMRPItemClick(
-        item: MRPItemModel,
+        item: MRPUiModel,
         position: Int
     ) {
 
