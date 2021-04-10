@@ -1,11 +1,10 @@
-package com.harismexis.cosmos.niavl
+package com.harismexis.cosmos.niavl.api
 
-import com.harismexis.cosmos.apod.model.APOD
+import com.harismexis.cosmos.niavl.model.NIAVLResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * Astronomy Picture of the Day
  * NASA Image and Video Library API
  * https://api.nasa.gov/
  * https://images.nasa.gov/
@@ -14,7 +13,8 @@ import retrofit2.http.Query
 interface NIAVLApi {
 
     @GET("search")
-    suspend fun getAPOD(
+    suspend fun search(
         @Query("q") query: String
-    ): APOD?
+        //, @Query("api_key") apiKey: String
+    ): NIAVLResponse?
 }

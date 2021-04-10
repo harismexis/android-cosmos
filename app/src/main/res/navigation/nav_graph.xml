@@ -18,6 +18,10 @@
             android:id="@+id/action_home_dest_to_mrp_dest"
             app:destination="@id/mrp_dest" />
 
+        <action
+            android:id="@+id/action_home_dest_to_niavl_dest"
+            app:destination="@id/niavl_dest" />
+
     </fragment>
 
     <fragment
@@ -50,5 +54,10 @@
         android:id="@+id/mrp_dest"
         android:name="com.harismexis.cosmos.mrp.fragment.MRPFragment"
         tools:layout="@layout/fragment_mrp"/>
+
+    <fragment
+        android:id="@+id/niavl_dest"
+        android:name="com.harismexis.cosmos.niavl.fragment.NIAVLFragment"
+        tools:layout="@layout/fragment_niavl"/>
 
 </navigation>

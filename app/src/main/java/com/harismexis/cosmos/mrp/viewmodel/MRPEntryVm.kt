@@ -9,8 +9,9 @@ import com.harismexis.cosmos.workshared.util.functional.Action1
 import com.harismexis.cosmos.workshared.util.rx.SchedulerProvider
 import com.harismexis.cosmos.workshared.util.rx.setSchedulersSingle
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class MRPEntryVm(
+class MRPEntryVm @Inject constructor(
     var mrpRepo: MRPRxRepo
 ) {
     private val TAG = APODEntryVm::class.qualifiedName

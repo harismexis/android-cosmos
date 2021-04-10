@@ -9,7 +9,7 @@ import com.harismexis.cosmos.workshared.util.rx.SchedulerProvider
 import com.harismexis.cosmos.workshared.util.rx.setSchedulersSingle
 import io.reactivex.disposables.CompositeDisposable
 
-class APODEntryVm(
+class APODEntryVm (
     var apodRepo: APODRxRepo
 ) {
 

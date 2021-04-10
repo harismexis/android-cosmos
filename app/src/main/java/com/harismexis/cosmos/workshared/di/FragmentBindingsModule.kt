@@ -4,6 +4,7 @@ import com.harismexis.cosmos.apod.fragment.APODFragment
 import com.harismexis.cosmos.apod.fragment.APODPlayerFragment
 import com.harismexis.cosmos.home.fragment.HomeFragment
 import com.harismexis.cosmos.mrp.fragment.MRPFragment
+import com.harismexis.cosmos.niavl.fragment.NIAVLFragment
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -25,5 +26,8 @@ abstract class FragmentBindingsModule {
 
     @ContributesAndroidInjector
     abstract fun apodPlayerFragment(): APODPlayerFragment
+
+    @ContributesAndroidInjector
+    abstract fun nIAVLFragment(): NIAVLFragment
 
 }

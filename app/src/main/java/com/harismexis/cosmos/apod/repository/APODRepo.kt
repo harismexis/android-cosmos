@@ -1,7 +1,6 @@
 package com.harismexis.cosmos.apod.repository
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.harismexis.cosmos.BuildConfig
 import com.harismexis.cosmos.apod.api.APODApi
 import com.harismexis.cosmos.apod.model.APOD
@@ -10,35 +9,26 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-open class APODRepo @Inject constructor() {
-
-    protected val api: APODApi
+class APODRepo @Inject constructor(
+    private var okHttpClient: OkHttpClient,
+    private var gson: Gson
+) {
+    private val api: APODApi
 
     init {
-        api = createApi()
+        api = createAPODApi()
     }
 
-    private fun createApi(): APODApi {
+    private fun createAPODApi(): APODApi {
         return buildRetrofit().create(APODApi::class.java)
     }
 
-    open fun buildRetrofit(): Retrofit {
+    private fun buildRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.APOD_BASE_URL)
-            .client(createOkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create(buildGSON()))
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-    }
-
-    protected fun createOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .build()
-    }
-
-    protected fun buildGSON(): Gson {
-        return GsonBuilder()
-            .setLenient()
-            .create()
     }
 
     suspend fun getAPODToday(): APOD? {
@@ -48,7 +38,7 @@ open class APODRepo @Inject constructor() {
     suspend fun getAPODByDate(
         dateOfApod: String?
     ): APOD? {
-        return api.getAPOD(dateOfApod, false, BuildConfig.NASA_API_KEY)
+        return getAPOD(dateOfApod, false)
     }
 
     private suspend fun getAPOD(

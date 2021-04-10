@@ -42,13 +42,16 @@ class HomeFragment : BaseFragment(), HomeClickListener {
         when (rowType) {
             RowType.APOD -> findNavController().navigate(R.id.action_home_dest_to_apod_dest)
             RowType.MRP -> findNavController().navigate(R.id.action_home_dest_to_mrp_dest)
+            RowType.NIAVL -> findNavController().navigate(R.id.action_home_dest_to_niavl_dest)
         }
     }
 
     private fun setupRecycler() {
         adapter = HomeAdapter(viewModel.getHomeEntries(), this)
-        binding?.rvHome?.layoutManager = LinearLayoutManager(requireActivity())
-        binding?.rvHome?.adapter = adapter
+        binding?.rvHome?.let {
+            it.layoutManager = LinearLayoutManager(requireActivity())
+            it.adapter = adapter
+        }
     }
 
 }

@@ -16,6 +16,7 @@ class HomeVm @Inject constructor() : ViewModel() {
     private fun initialiseHomeEntries() {
         homeEntries.add(RowType.APOD)
         homeEntries.add(RowType.MRP)
+        homeEntries.add(RowType.NIAVL)
     }
 
     fun getHomeEntries(): MutableList<RowType> {

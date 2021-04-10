@@ -1,7 +1,6 @@
 package com.harismexis.cosmos.mrp.repository
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.harismexis.cosmos.BuildConfig
 import com.harismexis.cosmos.mrp.api.MRPApi
 import com.harismexis.cosmos.mrp.model.response.LatestMRP
@@ -10,35 +9,26 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-open class MRPRepo @Inject constructor() {
-
-    protected val api: MRPApi
+class MRPRepo @Inject constructor(
+    private var okHttpClient: OkHttpClient,
+    private var gson: Gson
+) {
+    private val api: MRPApi
 
     init {
-        api = createApi()
+        api = createMRPApi()
     }
 
-    private fun createApi(): MRPApi {
+    private fun createMRPApi(): MRPApi {
         return buildRetrofit().create(MRPApi::class.java)
     }
 
-    open fun buildRetrofit(): Retrofit {
+    private fun buildRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.MRP_BASE_URL)
-            .client(createOkHttpClient())
-            .addConverterFactory(GsonConverterFactory.create(buildGSON()))
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-    }
-
-    protected fun createOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .build()
-    }
-
-    protected fun buildGSON(): Gson {
-        return GsonBuilder()
-            .setLenient()
-            .create()
     }
 
     suspend fun getCuriosityLatestMRP(): LatestMRP? {

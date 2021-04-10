@@ -16,6 +16,7 @@ class HomeAdapter(
     companion object {
         const val VIEW_TYPE_APOND = 0
         const val VIEW_TYPE_MRP = 1
+        const val VIEW_TYPE_NIAVL = 2
     }
 
     override fun onCreateViewHolder(
@@ -28,7 +29,8 @@ class HomeAdapter(
     override fun getItemViewType(position: Int): Int {
         return when (position) {
             0 -> VIEW_TYPE_APOND
-            else -> VIEW_TYPE_MRP
+            1 -> VIEW_TYPE_MRP
+            else -> VIEW_TYPE_NIAVL
         }
     }
 
