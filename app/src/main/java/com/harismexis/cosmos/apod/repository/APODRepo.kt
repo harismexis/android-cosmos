@@ -8,8 +8,9 @@ import com.harismexis.cosmos.apod.model.APOD
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-open class APODRepo {
+open class APODRepo @Inject constructor() {
 
     protected val api: APODApi
 

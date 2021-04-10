@@ -5,15 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.cosmos.workshared.extensions.getErrorMessage
-import com.harismexis.cosmos.workshared.util.network.ConnectivityMonitor
 import com.harismexis.cosmos.apod.model.APOD
 import com.harismexis.cosmos.apod.repository.APODRepo
+import com.harismexis.cosmos.workshared.extensions.getErrorMessage
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class APODVm(
-    var apodRepo: APODRepo,
-    var connectivity: ConnectivityMonitor,
+class APODVm @Inject constructor(
+    var apodRepo: APODRepo
 ) : ViewModel() {
 
     private val TAG = APODVm::class.qualifiedName

@@ -5,16 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.cosmos.workshared.extensions.getErrorMessage
-import com.harismexis.cosmos.workshared.util.network.ConnectivityMonitor
 import com.harismexis.cosmos.mrp.extensions.toUiModel
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
 import com.harismexis.cosmos.mrp.repository.MRPRepo
+import com.harismexis.cosmos.workshared.extensions.getErrorMessage
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MRPVm(
+class MRPVm @Inject constructor (
     var marsRepo: MRPRepo,
-    var connectivity: ConnectivityMonitor,
 ) : ViewModel() {
 
     private val TAG = MRPVm::class.qualifiedName

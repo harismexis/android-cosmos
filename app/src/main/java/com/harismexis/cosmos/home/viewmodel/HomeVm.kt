@@ -2,8 +2,9 @@ package com.harismexis.cosmos.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.harismexis.cosmos.workshared.enums.RowType
+import javax.inject.Inject
 
-class HomeVm : ViewModel() {
+class HomeVm @Inject constructor() : ViewModel() {
 
     private val TAG = HomeVm::class.qualifiedName
     private var homeEntries: MutableList<RowType> = mutableListOf()

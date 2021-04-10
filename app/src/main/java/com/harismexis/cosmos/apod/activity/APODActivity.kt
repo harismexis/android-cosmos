@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.viewModels
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.appcompat.widget.Toolbar
@@ -20,7 +21,6 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.apod.model.APOD
-import com.harismexis.cosmos.apod.repository.APODRepo
 import com.harismexis.cosmos.apod.viewmodel.APODVm
 import com.harismexis.cosmos.databinding.ActivityApodBinding
 import com.harismexis.cosmos.databinding.ApodViewBinding
@@ -29,8 +29,6 @@ import com.harismexis.cosmos.workshared.extensions.extractYouTubeVideoId
 import com.harismexis.cosmos.workshared.extensions.hasHdUrl
 import com.harismexis.cosmos.workshared.util.datepicker.showDatePicker
 import com.harismexis.cosmos.workshared.util.general.getAPODFormattedDate
-import com.harismexis.cosmos.workshared.util.network.ConnectivityMonitor
-import com.harismexis.cosmos.workshared.util.network.ConnectivityRequestProvider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
@@ -38,7 +36,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 class APODActivity : BaseActivity() {
 
     private lateinit var picker: DatePickerDialog
-    private lateinit var viewModel: APODVm
+    private val viewModel: APODVm by viewModels { viewModelFactory }
     private lateinit var binding: ActivityApodBinding
     private lateinit var apodView: ApodViewBinding
 
@@ -64,13 +62,6 @@ class APODActivity : BaseActivity() {
 
     override fun getRootView(): View {
         return binding.root
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = APODVm(
-            APODRepo(),
-            ConnectivityMonitor(applicationContext, ConnectivityRequestProvider())
-        )
     }
 
     override fun getToolbar(): Toolbar {

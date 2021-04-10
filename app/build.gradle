@@ -52,8 +52,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation libraries.values()
     implementation rxJavaDependencies.values()
-    implementation koinAndroidDependencies.values()
-    implementation koinAndroidXDependencies.values()
+    implementation daggerDependancies.values()
+    // implementation koinAndroidDependencies.values()
+    // implementation koinAndroidXDependencies.values()
     implementation soffrittiYouTubePlayer.values()
 
     debugImplementation librariesDebug.values()
@@ -67,4 +68,7 @@ dependencies {
 
     androidTestImplementation androidTestLibraries.values()
     androidTestImplementation mockkDependencies.mockk_android
+
+    kaptAndroidTest annotationProcessorsDependencies.dagger_compiler
+    kaptAndroidTest annotationProcessorsDependencies.dagger_android_processor
 }

@@ -8,8 +8,9 @@ import com.harismexis.cosmos.mrp.model.response.LatestMRP
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-open class MRPRepo {
+open class MRPRepo @Inject constructor() {
 
     protected val api: MRPApi
 

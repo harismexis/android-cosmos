@@ -30,10 +30,6 @@ class MRPDetailActivity : BaseActivity() {
         return binding.root
     }
 
-    override fun initialiseViewModel() {
-        // do nothing
-    }
-
     override fun getToolbar(): Toolbar? {
         return null
     }

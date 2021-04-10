@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.harismexis.cosmos.databinding.ActivityMrpBinding
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
@@ -21,7 +22,7 @@ import com.harismexis.cosmos.mrp.adapter.MRPItemAdapter
  */
 class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
 
-    private lateinit var viewModel: MRPVm
+    private val viewModel: MRPVm by viewModels { viewModelFactory }
     private lateinit var binding: ActivityMrpBinding
     private lateinit var adapter: MRPItemAdapter
     private var mrpItems: MutableList<MRPItemModel> = mutableListOf()
@@ -49,13 +50,6 @@ class MRPActivity : BaseActivity(), MRPItemVh.MRPItemClickListener {
     override fun initialiseView() {
         super.initialiseView()
         initRecycler()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = MRPVm(
-            MRPRepo(),
-            ConnectivityMonitor(applicationContext, ConnectivityRequestProvider())
-        )
     }
 
     override fun getToolbar(): androidx.appcompat.widget.Toolbar {
