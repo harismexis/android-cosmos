@@ -11,6 +11,7 @@
         android:layout_width="@dimen/apod_home_img_size"
         android:layout_height="@dimen/apod_home_img_size"
         android:scaleType="fitXY"
+        android:src="@drawable/loading_animation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -44,7 +44,8 @@ class MRPHomeVh(
         Glide.with(itemView.context)
             .load(Uri.parse(url))
             .error(ColorDrawable(Color.BLACK))
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .placeholder(R.drawable.loading_animation)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(binding.imgContainer)
     }
 

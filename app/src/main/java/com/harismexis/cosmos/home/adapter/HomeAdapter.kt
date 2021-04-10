@@ -48,8 +48,4 @@ class HomeAdapter(
         holder.unbind()
     }
 
-//    override fun getItemId(position: Int): Long {
-//        return models[position].currencyCode.id
-//    }
-
 }
