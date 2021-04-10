@@ -17,13 +17,13 @@ import com.harismexis.cosmos.mrp.viewmodel.MRPVm
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 
 /**
- * Showing a list of Mars Rover Photos (MRP)
+ * Shows a list of Mars Rover Photos (MRP)
  */
 class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
 
     private val viewModel: MRPVm by viewModels { viewModelFactory }
     private var binding: FragmentMrpBinding? = null
-    private lateinit var adapter: MRPItemAdapter
+    private lateinit var rvAdapter: MRPItemAdapter
     private var mrpItems: MutableList<MRPItemModel> = mutableListOf()
 
     override fun onViewCreated() {
@@ -39,12 +39,6 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
         return binding?.root
     }
 
-    override fun observeLiveData() {
-        viewModel.models.observe(viewLifecycleOwner, {
-            updateUI(it)
-        })
-    }
-
     override fun initialiseView() {
         setupToolbar()
         initRecycler()
@@ -53,23 +47,35 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
     private fun setupToolbar() {
         val navController = findNavController()
         val appBarConf = AppBarConfiguration(navController.graph)
-        binding?.toolbar?.setupWithNavController(navController, appBarConf)
-        binding?.toolbar?.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
-    }
-
-    private fun initRecycler() {
-        adapter = MRPItemAdapter(mrpItems, this)
-        adapter.setHasStableIds(true)
-        binding?.rvList?.let {
-            it.layoutManager = LinearLayoutManager(requireActivity())
-            it.adapter = adapter
+        binding?.toolbar?.apply {
+            setupWithNavController(navController, appBarConf)
+            setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
         }
     }
 
+    private fun initRecycler() {
+        rvAdapter = MRPItemAdapter(mrpItems, this)
+        rvAdapter.setHasStableIds(true)
+        binding?.rvList?.apply {
+            layoutManager = LinearLayoutManager(requireActivity())
+            adapter = rvAdapter
+        }
+    }
+
+    override fun observeLiveData() {
+        viewModel.models.observe(viewLifecycleOwner, {
+            updateUI(it)
+        })
+    }
+
     private fun updateUI(uiModel: List<MRPItemModel>) {
+        binding?.apply {
+            progressBar.visibility = View.GONE
+            rvList.visibility = View.VISIBLE
+        }
         mrpItems.clear()
         mrpItems.addAll(uiModel)
-        adapter.notifyDataSetChanged()
+        rvAdapter.notifyDataSetChanged()
     }
 
     override fun onMRPItemClick(
