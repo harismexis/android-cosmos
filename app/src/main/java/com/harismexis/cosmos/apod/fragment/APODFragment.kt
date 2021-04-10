@@ -68,7 +68,6 @@ class APODFragment : BaseFragment() {
         binding?.let { it ->
             binding?.toolbar?.setupWithNavController(navController, appBarConf)
             binding?.toolbar?.setNavigationIcon(R.drawable.ic_arrow_left_white_rounded_24dp)
-            // it.toolbarTitle.text = getString(R.string.screen_home_label)
             it.toolbar.inflateMenu(R.menu.menu_apod_activity)
             it.toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {

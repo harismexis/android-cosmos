@@ -4,18 +4,17 @@ import android.util.Log
 import com.harismexis.cosmos.mrp.model.response.LatestMRP
 import com.harismexis.cosmos.mrp.model.response.MRPItem
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
-import com.harismexis.cosmos.mrp.model.ui.MRPModel
 
 private val TAG = "MRPExtensions"
 
-fun LatestMRP?.toUiModel(): MRPModel {
+fun LatestMRP?.toUiModels(): List<MRPItemModel> {
     this?.let {
-        return it.latest_photos.toUiModel()
+        return it.latest_photos.toUiModels()
     }
     throw IllegalStateException("Error parsing Latest MRP response")
 }
 
-fun MutableList<MRPItem?>?.toUiModel(): MRPModel {
+fun MutableList<MRPItem?>?.toUiModels(): List<MRPItemModel> {
     this?.let {
         val models: MutableList<MRPItemModel> = mutableListOf()
         for (item in it) {
@@ -34,7 +33,7 @@ fun MutableList<MRPItem?>?.toUiModel(): MRPModel {
                 )
             }
         }
-        return MRPModel(models)
+        return models
     }
     throw IllegalStateException("Error parsing MRPResponse")
 }

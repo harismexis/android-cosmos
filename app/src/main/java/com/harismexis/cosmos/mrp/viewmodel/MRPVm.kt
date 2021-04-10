@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.harismexis.cosmos.mrp.extensions.toUiModel
+import com.harismexis.cosmos.mrp.extensions.toUiModels
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
 import com.harismexis.cosmos.mrp.repository.MRPRepo
 import com.harismexis.cosmos.workshared.extensions.getErrorMessage
@@ -26,7 +26,7 @@ class MRPVm @Inject constructor (
         viewModelScope.launch {
             try {
                 val response = marsRepo.getCuriosityLatestMRP()
-                mModels.value = response.toUiModel().mrpItems
+                mModels.value = response.toUiModels()
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }
