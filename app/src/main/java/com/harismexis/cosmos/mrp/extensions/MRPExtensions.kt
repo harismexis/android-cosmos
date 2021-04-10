@@ -1,20 +1,12 @@
 package com.harismexis.cosmos.mrp.extensions
 
 import android.util.Log
+import com.harismexis.cosmos.mrp.model.response.LatestMRP
+import com.harismexis.cosmos.mrp.model.response.MRPItem
 import com.harismexis.cosmos.mrp.model.ui.MRPItemModel
 import com.harismexis.cosmos.mrp.model.ui.MRPModel
-import com.harismexis.cosmos.mrp.model.response.LatestMRP
-import com.harismexis.cosmos.mrp.model.response.MRP
-import com.harismexis.cosmos.mrp.model.response.MRPItem
 
 private val TAG = "MRPExtensions"
-
-fun MRP?.toUiModel(): MRPModel {
-    this?.let {
-        return it.photos.toUiModel()
-    }
-    throw IllegalStateException("Error parsing MRP response")
-}
 
 fun LatestMRP?.toUiModel(): MRPModel {
     this?.let {

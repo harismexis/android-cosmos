@@ -14,8 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cosmos">
 
-        <activity android:name=".workshared.activity.BaseActivity" />
-
         <activity
             android:name=".workshared.activity.MainActivity"
             android:label="@string/activity_home_label"
