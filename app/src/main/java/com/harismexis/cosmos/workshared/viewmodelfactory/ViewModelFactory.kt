@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.harismexis.cosmos.apod.viewmodel.APODVm
 import com.harismexis.cosmos.home.viewmodel.HomeVm
+import com.harismexis.cosmos.mediaplayer.MediaPlayerVm
 import com.harismexis.cosmos.mrp.viewmodel.MRPVm
 import com.harismexis.cosmos.niavl.viewmodel.NIAVLVm
 import dagger.Binds
@@ -58,4 +59,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NIAVLVm::class)
     internal abstract fun provideNIAVLVm(viewModel: NIAVLVm): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MediaPlayerVm::class)
+    internal abstract fun provideMediaPlayerVm(viewModel: MediaPlayerVm): ViewModel
 }

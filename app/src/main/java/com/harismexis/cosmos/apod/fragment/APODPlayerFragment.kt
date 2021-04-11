@@ -98,6 +98,6 @@ class APODPlayerFragment : BaseFragment() {
         return binding?.root
     }
 
-    override fun observeLiveData() {}
+    private fun observeLiveData() {}
 
 }

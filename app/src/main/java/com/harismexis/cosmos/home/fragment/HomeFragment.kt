@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment(), HomeClickListener {
         return binding?.root
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         //
     }
 

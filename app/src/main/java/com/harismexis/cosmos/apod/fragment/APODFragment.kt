@@ -50,7 +50,7 @@ class APODFragment : BaseFragment() {
         return binding?.root
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.apod.observe(this, {
             updateUI(it)
         })

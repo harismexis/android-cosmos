@@ -69,7 +69,7 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
         }
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.models.observe(viewLifecycleOwner, {
             updateUI(it)
         })
@@ -99,7 +99,8 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
 
     override fun onNIAVLItemClick(item: NIAVLUiModel, position: Int) {
         if (item.mediaType == NIAVLDataEntry.MEDIA_TYPE_VIDEO) {
-            findNavController().navigate(NIAVLFragmentDirections.actionNiavlDestToMediaPlayerDest())
+            val action = NIAVLFragmentDirections.actionNiavlDestToMediaPlayerDest(item.href)
+            findNavController().navigate(action)
         }
     }
 

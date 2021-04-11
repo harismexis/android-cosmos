@@ -1,6 +1,7 @@
 package com.harismexis.cosmos.mediaplayer
 
 import android.media.MediaPlayer
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.fragment.app.viewModels
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.databinding.FragmentMediaPlayerBinding
 import com.harismexis.cosmos.workshared.activity.BaseFragment
@@ -17,15 +19,23 @@ class MediaPlayerFragment : BaseFragment(),
     SeekBar.OnSeekBarChangeListener,
     MediaPlayer.OnPreparedListener {
 
+    private val viewModel: MediaPlayerVm by viewModels { viewModelFactory }
     private var binding: FragmentMediaPlayerBinding? = null
     private val player = MediaPlayer()
     private var handler = Handler(Looper.getMainLooper())
     private lateinit var seekRunnable: Runnable
+    private var mediaUrl: String? = null
 
     companion object {
+        const val ARG_MEDIA_COLLECTION_URL = "mediaCollectionUrl"
         const val SECOND = 1000
-        const val URL =
+        const val SAMPLE_NASA_VIDEO_URL =
             "https://images-assets.nasa.gov/video/JSC-Orion-2021-GA_infographic_animation4k/JSC-Orion-2021-GA_infographic_animation4k~orig.mp4"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val mediaCollectionUrl = arguments?.getString(ARG_MEDIA_COLLECTION_URL)
     }
 
     override fun initialiseView() {}
@@ -56,7 +66,11 @@ class MediaPlayerFragment : BaseFragment(),
         return binding?.root
     }
 
-    override fun observeLiveData() {}
+    private fun observeLiveData() {
+//        viewModel.mediaUrls.observe(viewLifecycleOwner, {
+//            // Get video urls here and load to player
+//        })
+    }
 
     private fun initializeSeekBar() {
         binding?.let {
@@ -81,7 +95,7 @@ class MediaPlayerFragment : BaseFragment(),
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
         player.apply {
-            setDataSource(URL)
+            setDataSource(SAMPLE_NASA_VIDEO_URL)
             setDisplay(surfaceHolder)
             prepareAsync()
         }

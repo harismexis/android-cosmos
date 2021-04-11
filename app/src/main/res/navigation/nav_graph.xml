@@ -60,10 +60,6 @@
         android:name="com.harismexis.cosmos.niavl.fragment.NIAVLFragment"
         tools:layout="@layout/fragment_niavl">
 
-        <argument
-            android:name="niavlVideoId"
-            app:argType="string" />
-
         <action
             android:id="@+id/action_niavl_dest_to_media_player_dest"
             app:destination="@id/media_player_dest" />
@@ -73,6 +69,12 @@
     <fragment
         android:id="@+id/media_player_dest"
         android:name="com.harismexis.cosmos.mediaplayer.MediaPlayerFragment"
-        tools:layout="@layout/fragment_media_player" />
+        tools:layout="@layout/fragment_media_player">
+
+        <argument
+            android:name="mediaCollectionUrl"
+            app:argType="string" />
+
+    </fragment>
 
 </navigation>

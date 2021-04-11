@@ -62,7 +62,7 @@ class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
         }
     }
 
-    override fun observeLiveData() {
+    private fun observeLiveData() {
         viewModel.models.observe(viewLifecycleOwner, {
             updateUI(it)
         })
