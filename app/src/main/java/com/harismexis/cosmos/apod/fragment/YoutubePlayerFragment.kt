@@ -15,6 +15,10 @@ import com.harismexis.cosmos.workshared.util.ui.showSystemUI
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
+/**
+ * Youtube Player for playing youtube videos
+ * It is implemented using PierfrancescoSoffritti/android-youtube-player
+ */
 class YoutubePlayerFragment : BaseFragment() {
 
     companion object {

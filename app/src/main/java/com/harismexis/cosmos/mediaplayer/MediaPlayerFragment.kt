@@ -15,6 +15,10 @@ import com.harismexis.cosmos.R
 import com.harismexis.cosmos.databinding.FragmentMediaPlayerBinding
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 
+/**
+ * Player for loading videos and audios from NASA Image and Video Library.
+ * It is used for playing mp4 etc and it's based on Android MediaPlayer.
+ */
 class MediaPlayerFragment : BaseFragment(),
     SurfaceHolder.Callback,
     SeekBar.OnSeekBarChangeListener,

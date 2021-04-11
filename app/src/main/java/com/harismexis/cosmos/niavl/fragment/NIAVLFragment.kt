@@ -19,7 +19,8 @@ import com.harismexis.cosmos.workshared.activity.BaseFragment
 import com.harismexis.cosmos.workshared.util.ui.hideKeyboard
 
 /**
- * Screen to search for image / video / audio in NASA Image and Video Library
+ * Screen to search for image / video / audio in
+ * NASA Image and Video Library (NIAVL)
  */
 class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
     android.widget.SearchView.OnQueryTextListener {
@@ -102,6 +103,8 @@ class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
             val action = NIAVLFragmentDirections.actionNiavlDestToMediaPlayerDest(item.href)
             findNavController().navigate(action)
         }
+        // TODO: If item type is audio also load it on player
+        // TODO: If item type is image open screen to show images of the item
     }
 
 }

@@ -4,6 +4,12 @@ More NASA APIs & features will be added, this is an ongoing project.
 I created this project to experiment and learn.
 You need to add your own NASA API key in configurations.gradle.
 
+### Technologies:
+
+Project uses MVVM, Kotlin, Coroutines, Jetpack Navigation, Retrofit, 
+Glide, LiveData, PierfrancescoSoffritti/android-youtube-player, MediaPlayer,
+ViewBinding.
+
 #### Home
 ![Alt text](screenshots/home/home-2020-12-14-021454.png?raw=true "app screenshot")
 

@@ -17,7 +17,7 @@ import com.harismexis.cosmos.mrp.viewmodel.MRPVm
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 
 /**
- * Shows a list of Mars Rover Photos (MRP)
+ * Shows a list of Latest Mars Rover Photos (MRP)
  */
 class MRPFragment : BaseFragment(), MRPItemVh.MRPItemClickListener {
 

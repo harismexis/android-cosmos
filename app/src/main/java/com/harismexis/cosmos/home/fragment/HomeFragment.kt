@@ -14,6 +14,9 @@ import com.harismexis.cosmos.home.viewmodel.HomeVm
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 import com.harismexis.cosmos.workshared.enums.RowType
 
+/**
+ * Shows a list of all NASA APIs that can be explored in the project.
+ */
 class HomeFragment : BaseFragment(), HomeClickListener {
 
     private val viewModel: HomeVm by viewModels { viewModelFactory }

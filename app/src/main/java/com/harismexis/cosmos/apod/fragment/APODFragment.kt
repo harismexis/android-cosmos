@@ -29,6 +29,11 @@ import com.harismexis.cosmos.workshared.util.general.getAPODFormattedDate
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
+/**
+ * Screen to see Astronomy Picture of the Day (APOD).
+ * APOD can be image or youtube video. Video can be played
+ * with Youtube player.
+ */
 class APODFragment : BaseFragment() {
 
     private val viewModel: APODVm by viewModels { viewModelFactory }
