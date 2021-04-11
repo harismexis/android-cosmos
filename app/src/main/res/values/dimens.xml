@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- GENERIC -->
+    <!-- generic -->
     <dimen name="large_txt">20sp</dimen>
     <dimen name="normal_txt">18sp</dimen>
     <dimen name="small_txt">16sp</dimen>
@@ -13,28 +13,31 @@
     <dimen name="base_txt_size">18sp</dimen>
     <dimen name="loading_progress_size">50dp</dimen>
 
-    <!-- HOME -->
+    <!-- home -->
     <dimen name="activity_home_padding">6dp</dimen>
 
-    <!-- APOD -->
+    <!-- apod -->
     <dimen name="apod_home_img_size">100dp</dimen>
     <dimen name="apod_home_row_root_padding">10dp</dimen>
     <dimen name="apod_view_padding">10dp</dimen>
 
-    <!-- APOD Player -->
+    <!-- apod player -->
     <dimen name="player_back_icon_margin_start">10dp</dimen>
     <dimen name="player_back_icon_margin_top">10dp</dimen>
 
-    <!-- MRP -->
+    <!-- mrp -->
     <dimen name="activity_mrp_detail_padding">6dp</dimen>
     <dimen name="mrp_home_img_size">100dp</dimen>
     <dimen name="mrp_home_row_root_padding">10dp</dimen>
 
-    <!-- MRP ITEM VH -->
+    <!-- mrp item vh -->
     <dimen name="mrp_item_padding">10dp</dimen>
     <dimen name="mrp_item_img_height">260dp</dimen>
     <dimen name="mrp_item_meta_margin_horizontal">1dp</dimen>
     <dimen name="mrp_item_meta_margin_top">10dp</dimen>
+
+    <!-- niavl item vh -->
+    <dimen name="niavl_item_padding">10dp</dimen>
 
     <!-- recycler divider -->
     <dimen name="divider_margin_horizontal">26dp</dimen>

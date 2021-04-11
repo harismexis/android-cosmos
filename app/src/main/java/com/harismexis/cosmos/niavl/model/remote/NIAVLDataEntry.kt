@@ -12,4 +12,8 @@ data class NIAVLDataEntry(
     val mediaType: String?, // "video",
     @SerializedName("date_created")
     val dateCreated: String? // "2021-03-29T00:00:00Z"
-)
+) {
+    companion object {
+        const val MEDIA_TYPE_VIDEO = "video"
+    }
+}

@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/mrp_item_padding">
+    android:padding="@dimen/niavl_item_padding">
 
     <ImageView
-        android:id="@+id/imgPhoto"
-        android:layout_width="match_parent"
+        android:id="@+id/imgv"
+        android:layout_width="0dp"
         android:layout_height="@dimen/mrp_item_img_height"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <RelativeLayout
-        android:id="@+id/vh_niavl_item_meta"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/play_icon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgPhoto"
-        android:layout_marginStart="@dimen/mrp_item_meta_margin_horizontal"
+        android:src="@drawable/ic_play_circle_outline_white_24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imgv"
+        app:layout_constraintEnd_toEndOf="@+id/imgv"
+        app:layout_constraintStart_toStartOf="@+id/imgv"
+        app:layout_constraintTop_toTopOf="@+id/imgv"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/txt1"
+        style="@style/MiniTitleTxtv"
         android:layout_marginTop="@dimen/mrp_item_meta_margin_top"
-        android:layout_marginEnd="@dimen/mrp_item_meta_margin_horizontal">
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgv" />
 
-        <TextView
-            android:id="@+id/txt1"
-            style="@style/MiniTitleTxtv"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="0dp" />
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
