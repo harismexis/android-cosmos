@@ -25,8 +25,5 @@ ViewBinding.
 #### Mars Rover Photos (MRP)
 ![Alt text](screenshots/mrp/mrp-2020-12-14-021600.png?raw=true "app screenshot")
 
-#### Mars rover photos (MRP) 
-![Alt text](screenshots/mrp/mrp-2020-12-14-021600.png?raw=true "app screenshot")
-
 #### NASA Image and Video Library (NIAVL) 
 ![Alt text](screenshots/niavl/niavl.png?raw=true "app screenshot")
