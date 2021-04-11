@@ -1,7 +1,7 @@
 package com.harismexis.cosmos.workshared.di
 
 import com.harismexis.cosmos.apod.fragment.APODFragment
-import com.harismexis.cosmos.apod.fragment.APODPlayerFragment
+import com.harismexis.cosmos.apod.fragment.YoutubePlayerFragment
 import com.harismexis.cosmos.home.fragment.HomeFragment
 import com.harismexis.cosmos.mediaplayer.MediaPlayerFragment
 import com.harismexis.cosmos.mrp.fragment.MRPFragment
@@ -26,7 +26,7 @@ abstract class FragmentBindingsModule {
     abstract fun mrpFragment(): MRPFragment
 
     @ContributesAndroidInjector
-    abstract fun apodPlayerFragment(): APODPlayerFragment
+    abstract fun apodPlayerFragment(): YoutubePlayerFragment
 
     @ContributesAndroidInjector
     abstract fun nIAVLFragment(): NIAVLFragment

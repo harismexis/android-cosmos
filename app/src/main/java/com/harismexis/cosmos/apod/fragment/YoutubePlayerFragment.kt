@@ -8,25 +8,25 @@ import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.navigation.fragment.findNavController
 import com.harismexis.cosmos.R
-import com.harismexis.cosmos.databinding.FragmentApodPlayerBinding
+import com.harismexis.cosmos.databinding.FragmentYoutubePlayerBinding
 import com.harismexis.cosmos.workshared.activity.BaseFragment
 import com.harismexis.cosmos.workshared.util.ui.hideSystemUI
 import com.harismexis.cosmos.workshared.util.ui.showSystemUI
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
-class APODPlayerFragment : BaseFragment() {
+class YoutubePlayerFragment : BaseFragment() {
 
     companion object {
         const val ARG_VIDEO_ID = "apodVideoId"
     }
 
-    private var binding: FragmentApodPlayerBinding? = null
+    private var binding: FragmentYoutubePlayerBinding? = null
     private var videoPlayer: YouTubePlayer? = null
     private var isFullScreen: Boolean = false
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = FragmentApodPlayerBinding.inflate(inflater, container, false)
+        binding = FragmentYoutubePlayerBinding.inflate(inflater, container, false)
     }
 
     override fun initialiseView() {
@@ -71,7 +71,7 @@ class APODPlayerFragment : BaseFragment() {
             backIcon.layoutParams = params
             backIcon.setImageResource(R.drawable.ic_arrow_left_white_rounded_24dp)
             backIcon.setOnClickListener {
-                findNavController().navigate(APODPlayerFragmentDirections.actionExit())
+                findNavController().navigate(YoutubePlayerFragmentDirections.actionExit())
             }
             controls.addView(backIcon)
         }

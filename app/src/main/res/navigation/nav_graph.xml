@@ -37,8 +37,8 @@
 
     <fragment
         android:id="@+id/apod_player_dest"
-        android:name="com.harismexis.cosmos.apod.fragment.APODPlayerFragment"
-        tools:layout="@layout/fragment_apod_player">
+        android:name="com.harismexis.cosmos.apod.fragment.YoutubePlayerFragment"
+        tools:layout="@layout/fragment_youtube_player">
 
         <argument
             android:name="apodVideoId"

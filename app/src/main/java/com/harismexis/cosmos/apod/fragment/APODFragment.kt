@@ -34,12 +34,15 @@ class APODFragment : BaseFragment() {
     private val viewModel: APODVm by viewModels { viewModelFactory }
     private var binding: FragmentApodBinding? = null
     private var apodView: ApodViewBinding? = null
-
     private var youTubePlayer: YouTubePlayer? = null
 
-    override fun onViewCreated() {
-
+    override fun initialiseView() {
+        setupToolbar()
+        observeLiveData()
+        initialiseYouTubeView()
     }
+
+    override fun onViewCreated() {}
 
     override fun initialiseViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = FragmentApodBinding.inflate(layoutInflater)
@@ -48,18 +51,6 @@ class APODFragment : BaseFragment() {
 
     override fun getRootView(): View? {
         return binding?.root
-    }
-
-    private fun observeLiveData() {
-        viewModel.apod.observe(this, {
-            updateUI(it)
-        })
-    }
-
-    override fun initialiseView() {
-        setupToolbar()
-        observeLiveData()
-        initialiseYouTubeView()
     }
 
     private fun setupToolbar() {
@@ -86,14 +77,30 @@ class APODFragment : BaseFragment() {
         }
     }
 
+    private fun initialiseYouTubeView() {
+        apodView?.youTubeView?.let {
+            it.getPlayerUiController().showFullscreenButton(false)
+            lifecycle.addObserver(it)
+            it.initialize(object : AbstractYouTubePlayerListener() {
+                override fun onReady(@NonNull player: YouTubePlayer) {
+                    youTubePlayer = player
+                }
+            })
+        }
+    }
+
+    private fun observeLiveData() {
+        viewModel.apod.observe(this, {
+            updateUI(it)
+        })
+    }
+
     private fun updateUI(apod: APOD) {
         populateMedia(apod)
         apodView?.let {
             it.txtTitle.text = apod.title
             it.txtDate.text = apod.date
             it.txtExplanation.text = apod.explanation
-//            it.txtServiceVersion.text = apod.serviceVersion
-//            it.txtMediaType.text = apod.mediaType
         }
     }
 
@@ -111,27 +118,11 @@ class APODFragment : BaseFragment() {
 
     private fun populateVideo(url: String?) {
         url.extractYouTubeVideoId()?.let { it ->
-            populateYoutubeView(it)
+            loadYoutubeVideo(it)
         }
     }
 
-    private fun initialiseYouTubeView() {
-        apodView?.youTubeView?.let {
-            it.getPlayerUiController().showFullscreenButton(false)
-            lifecycle.addObserver(it)
-            it.initialize(object : AbstractYouTubePlayerListener() {
-                override fun onReady(@NonNull player: YouTubePlayer) {
-                    youTubePlayer = player
-                }
-            })
-        }
-    }
-
-    /**
-     * Example url of video file:
-     * https://www.youtube.com/embed/NuLuCeawQSo?rel=0
-     */
-    private fun populateYoutubeView(videoId: String) {
+    private fun loadYoutubeVideo(videoId: String) {
         youTubePlayer?.loadVideo(videoId, 0f)
         apodView?.apply {
             youTubeView.visibility = View.VISIBLE

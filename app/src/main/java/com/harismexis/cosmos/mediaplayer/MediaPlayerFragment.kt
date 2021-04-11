@@ -37,6 +37,9 @@ class MediaPlayerFragment : BaseFragment(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mediaCollectionUrl = arguments?.getString(ARG_MEDIA_COLLECTION_URL)
+        // TODO: Call viewModel.fetchMediaUrls(mediaCollectionUrl) to obtain the
+        // video / audio url to load in the Player.
+        // Currently just loading a fixed url of a sample video
     }
 
     override fun initialiseView() {}
@@ -69,9 +72,8 @@ class MediaPlayerFragment : BaseFragment(),
     }
 
     private fun observeLiveData() {
-//        viewModel.mediaUrls.observe(viewLifecycleOwner, {
-//            // Get video urls here and load to player
-//        })
+        // TODO: Observe the live data from ViewModel to get the
+        // url of the video / audio to load in the player
     }
 
     private fun initializeSeekBar() {
@@ -98,6 +100,7 @@ class MediaPlayerFragment : BaseFragment(),
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
         player.apply {
+            // TODO: Load the real video url, currently loading a fixed url
             setDataSource(SAMPLE_NASA_VIDEO_URL)
             setDisplay(surfaceHolder)
             prepareAsync()
