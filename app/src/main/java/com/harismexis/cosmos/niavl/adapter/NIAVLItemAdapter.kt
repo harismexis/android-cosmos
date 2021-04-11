@@ -33,9 +33,9 @@ class NIAVLItemAdapter(
         return models.size
     }
 
-//    override fun getItemId(position: Int): Long {
-//        return models[position].id.toLong()
-//    }
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
 
     override fun onViewDetachedFromWindow(holder: NIAVLItemVh) {
         super.onViewDetachedFromWindow(holder)

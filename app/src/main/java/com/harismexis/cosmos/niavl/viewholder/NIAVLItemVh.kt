@@ -19,7 +19,7 @@ class NIAVLItemVh(
         position: Int
     ) {
         itemView.context.populateWithGlide(binding.imgPhoto, item.thumbUrl)
-        binding.txt1.text = item.title
+        binding.txt1.text = item.nasaId
         binding.root.setOnClickListener {
             itemClickListener.onNIAVLItemClick(item, position)
         }
