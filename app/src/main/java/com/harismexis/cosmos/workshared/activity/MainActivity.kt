@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupDestinationListener(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             requestedOrientation = if (destination.id == R.id.apod_player_dest
-                //|| destination.id == R.id.media_player_dest
+                || destination.id == R.id.media_player_dest
             ) {
                 ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
             } else {
