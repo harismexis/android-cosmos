@@ -1,7 +1,6 @@
 package com.harismexis.cosmos.mediaplayer
 
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -18,31 +17,31 @@ class MediaPlayerFragment : BaseFragment(),
     SeekBar.OnSeekBarChangeListener,
     MediaPlayer.OnPreparedListener {
 
-    private val mediaPlayer = MediaPlayer()
-    private lateinit var runnable: Runnable
-    private var handler = Handler(Looper.getMainLooper())
-    private lateinit var selectedVideoUri: Uri
     private var binding: FragmentMediaPlayerBinding? = null
+    private val player = MediaPlayer()
+    private var handler = Handler(Looper.getMainLooper())
+    private lateinit var seekRunnable: Runnable
 
     companion object {
-        const val GET_VIDEO = 123
         const val SECOND = 1000
         const val URL =
-            "https://res.cloudinary.com/dit0lwal4/video/upload/v1597756157/samples/elephants.mp4"
+            "https://images-assets.nasa.gov/video/JSC-Orion-2021-GA_infographic_animation4k/JSC-Orion-2021-GA_infographic_animation4k~orig.mp4"
     }
 
+    override fun initialiseView() {}
+
     override fun onViewCreated() {
-        mediaPlayer.setOnPreparedListener(this)
+        player.setOnPreparedListener(this)
         binding?.let {
             it.videoView.holder.addCallback(this)
             it.seekBar.setOnSeekBarChangeListener(this)
             it.playButton.isEnabled = false
             it.playButton.setOnClickListener { _ ->
-                if (mediaPlayer.isPlaying) {
-                    mediaPlayer.pause()
+                if (player.isPlaying) {
+                    player.pause()
                     it.playButton.setImageResource(android.R.drawable.ic_media_play)
                 } else {
-                    mediaPlayer.start()
+                    player.start()
                     it.playButton.setImageResource(android.R.drawable.ic_media_pause)
                 }
             }
@@ -59,39 +58,29 @@ class MediaPlayerFragment : BaseFragment(),
 
     override fun observeLiveData() {}
 
-    override fun initialiseView() {}
-
-    private fun timeInString(seconds: Int): String {
-        return String.format(
-            "%02d:%02d",
-            (seconds / 3600 * 60 + ((seconds % 3600) / 60)),
-            (seconds % 60)
-        )
-    }
-
     private fun initializeSeekBar() {
         binding?.let {
-            it.seekBar.max = mediaPlayer.seconds
+            it.seekBar.max = player.seconds
             it.textProgress.text = getString(R.string.default_value)
-            it.textTotalTime.text = timeInString(mediaPlayer.seconds)
+            it.textTotalTime.text = timeInString(player.seconds)
             it.progressBar.visibility = View.GONE
             it.playButton.isEnabled = true
         }
     }
 
     private fun updateSeekBar() {
-        runnable = Runnable {
+        seekRunnable = Runnable {
             binding?.let {
-                it.textProgress.text = timeInString(mediaPlayer.currentSeconds)
-                it.seekBar.progress = mediaPlayer.currentSeconds
+                it.textProgress.text = timeInString(player.currentSeconds)
+                it.seekBar.progress = player.currentSeconds
             }
-            handler.postDelayed(runnable, SECOND.toLong())
+            handler.postDelayed(seekRunnable, SECOND.toLong())
         }
-        handler.postDelayed(runnable, SECOND.toLong())
+        handler.postDelayed(seekRunnable, SECOND.toLong())
     }
 
     override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
-        mediaPlayer.apply {
+        player.apply {
             setDataSource(URL)
             setDisplay(surfaceHolder)
             prepareAsync()
@@ -108,8 +97,7 @@ class MediaPlayerFragment : BaseFragment(),
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        if (fromUser)
-            mediaPlayer.seekTo(progress * SECOND)
+        if (fromUser) player.seekTo(progress * SECOND)
     }
 
     override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -118,8 +106,16 @@ class MediaPlayerFragment : BaseFragment(),
 
     override fun onDestroy() {
         super.onDestroy()
-        handler.removeCallbacks(runnable)
-        mediaPlayer.release()
+        handler.removeCallbacks(seekRunnable)
+        player.release()
+    }
+
+    private fun timeInString(seconds: Int): String {
+        return String.format(
+            "%02d:%02d",
+            (seconds / 3600 * 60 + ((seconds % 3600) / 60)),
+            (seconds % 60)
+        )
     }
 
     private val MediaPlayer.seconds: Int
