@@ -6,26 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.harismexis.cosmos.mediaplayer.MediaPlayerFragment">
 
-    <ImageButton
-        android:id="@+id/play_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/play_btn_margin_bottom"
-        android:src="@android:drawable/ic_media_play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <SeekBar
         android:id="@+id/seek_bar"
         android:layout_width="0dp"
-        android:maxHeight="3dp"
-        android:minHeight="3dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/seek_bar_margin"
         android:layout_marginTop="@dimen/seek_bar_margin"
         android:layout_marginEnd="@dimen/seek_bar_margin"
+        android:maxHeight="3dp"
+        android:minHeight="3dp"
         android:progressDrawable="@drawable/seek_bar"
         android:thumbTint="@color/red_2"
         app:layout_constraintEnd_toStartOf="@+id/txt_duration"
@@ -56,6 +46,16 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="6:4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_play_arrow_white_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -42,7 +42,7 @@
     <dimen name="divider_margin_horizontal">26dp</dimen>
 
     <!-- media player -->
-    <dimen name="seek_bar_margin">8dp</dimen>
+    <dimen name="seek_bar_margin">16dp</dimen>
     <dimen name="play_btn_margin_bottom">20dp</dimen>
 
 </resources>

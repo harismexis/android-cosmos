@@ -9,6 +9,7 @@ import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.harismexis.cosmos.R
 import com.harismexis.cosmos.databinding.FragmentMediaPlayerBinding
@@ -46,13 +47,14 @@ class MediaPlayerFragment : BaseFragment(),
             it.playerView.holder.addCallback(this)
             it.seekBar.setOnSeekBarChangeListener(this)
             it.playBtn.isEnabled = false
+            it.playBtn.isVisible = false
             it.playBtn.setOnClickListener { _ ->
                 if (player.isPlaying) {
                     player.pause()
-                    it.playBtn.setImageResource(android.R.drawable.ic_media_play)
+                    it.playBtn.setImageResource(R.drawable.ic_play_arrow_white_24dp)
                 } else {
                     player.start()
-                    it.playBtn.setImageResource(android.R.drawable.ic_media_pause)
+                    it.playBtn.setImageResource(R.drawable.ic_pause_white_24dp)
                 }
             }
         }
@@ -76,16 +78,17 @@ class MediaPlayerFragment : BaseFragment(),
         binding?.let {
             it.seekBar.max = player.seconds
             it.txtProgress.text = getString(R.string.media_player_progress)
-            it.txtDuration.text = timeInString(player.seconds)
+            it.txtDuration.text = formatTime(player.seconds)
             it.progressBar.visibility = View.GONE
             it.playBtn.isEnabled = true
+            it.playBtn.isVisible = true
         }
     }
 
     private fun updateSeekBar() {
         seekRunnable = Runnable {
             binding?.let {
-                it.txtProgress.text = timeInString(player.currentSeconds)
+                it.txtProgress.text = formatTime(player.currentSeconds)
                 it.seekBar.progress = player.currentSeconds
             }
             handler.postDelayed(seekRunnable, SECOND.toLong())
@@ -118,13 +121,15 @@ class MediaPlayerFragment : BaseFragment(),
 
     override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
-    override fun onDestroy() {
-        super.onDestroy()
-        handler.removeCallbacks(seekRunnable)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (this::seekRunnable.isInitialized) {
+            handler.removeCallbacks(seekRunnable)
+        }
         player.release()
     }
 
-    private fun timeInString(seconds: Int): String {
+    private fun formatTime(seconds: Int): String {
         return String.format(
             "%02d:%02d",
             (seconds / 3600 * 60 + ((seconds % 3600) / 60)),
