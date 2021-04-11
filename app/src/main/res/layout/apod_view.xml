@@ -61,7 +61,7 @@
 
     <TextView
         android:id="@+id/txtDate"
-        style="@style/DateTxtv"
+        style="@style/ApodDateTxtv"
         android:layout_marginTop="@dimen/txtv_default_margin"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"

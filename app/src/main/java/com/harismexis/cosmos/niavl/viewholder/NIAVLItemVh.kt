@@ -22,7 +22,7 @@ class NIAVLItemVh(
     ) {
         itemView.context.populateWithGlide(binding.imgv, item.thumbUrl)
         setupPlayIcon(item.mediaType == NIAVLDataEntry.MEDIA_TYPE_VIDEO)
-        binding.txt1.text = item.description
+        binding.txt1.text = item.title
         binding.root.setOnClickListener {
             itemClickListener.onNIAVLItemClick(item, position)
         }

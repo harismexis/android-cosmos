@@ -14,24 +14,16 @@
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
-    <style name="DateTxtv" parent="BaseTxtv">
+    <style name="MetaTxtv" parent="BaseTxtv">
         <item name="android:textSize">@dimen/normal_txt</item>
     </style>
 
-    <style name="MetaTxtv" parent="BaseTxtv">
+    <style name="SmallTitleTxtv" parent="TitleTxtv">
+        <item name="android:textSize">@dimen/medium_txt</item>
+    </style>
+
+    <style name="VhMetaTxtv" parent="MetaTxtv">
         <item name="android:textSize">@dimen/small_txt</item>
-    </style>
-
-    <style name="MiniTitleTxtv" parent="TitleTxtv">
-        <item name="android:textSize">@dimen/mini_large_txt</item>
-    </style>
-
-    <style name="MiniDateTxtv" parent="DateTxtv">
-        <item name="android:textSize">@dimen/mini_normal_txt</item>
-    </style>
-
-    <style name="MiniMetaTxtv" parent="MetaTxtv">
-        <item name="android:textSize">@dimen/mini_small_txt</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -51,6 +43,11 @@
         <item name="android:textSize">16sp</item>
         <item name="android:queryBackground">@null</item>
         <item name="android:searchHintIcon">@null</item>
+    </style>
+
+    <!-- apod view -->
+    <style name="ApodDateTxtv" parent="BaseTxtv">
+        <item name="android:textSize">@dimen/big_txt</item>
     </style>
 
 </resources>

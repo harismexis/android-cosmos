@@ -3,12 +3,10 @@
 
     <!-- generic -->
     <dimen name="large_txt">20sp</dimen>
-    <dimen name="normal_txt">18sp</dimen>
-    <dimen name="small_txt">16sp</dimen>
-
-    <dimen name="mini_large_txt">14sp</dimen>
-    <dimen name="mini_normal_txt">13sp</dimen>
-    <dimen name="mini_small_txt">12sp</dimen>
+    <dimen name="big_txt">18sp</dimen>
+    <dimen name="normal_txt">16sp</dimen>
+    <dimen name="medium_txt">14sp</dimen>
+    <dimen name="small_txt">12sp</dimen>
 
     <dimen name="base_txt_size">18sp</dimen>
     <dimen name="loading_progress_size">50dp</dimen>

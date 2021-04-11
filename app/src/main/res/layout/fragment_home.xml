@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="@string/home_label"
-            android:textSize="@dimen/small_txt" />
+            android:textSize="@dimen/normal_txt" />
 
     </androidx.appcompat.widget.Toolbar>
 

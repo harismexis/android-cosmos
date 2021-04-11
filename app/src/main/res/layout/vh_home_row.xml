@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/txtMeta"
-        style="@style/MiniMetaTxtv"
+        style="@style/VhMetaTxtv"
         android:layout_marginStart="@dimen/txtv_default_margin"
         android:layout_marginTop="@dimen/txtv_default_margin"
         app:layout_constrainedWidth="true"
