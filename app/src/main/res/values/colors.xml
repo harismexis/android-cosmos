@@ -64,6 +64,11 @@
     <color name="yellow_one">#ffc800</color>
     <color name="yellow_two">#ffb200</color>
 
+    <color name="red_1">#FF0000</color>
+    <color name="red_2">#cc0000</color>
+    <color name="red_3">#ff3232</color>
+    <color name="red_4">#ff7f7f</color>
+
     <color name="transparent">#00ffffff</color>
 
     <!-- End Palette -->
