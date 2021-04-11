@@ -92,8 +92,8 @@ class APODFragment : BaseFragment() {
             it.txtTitle.text = apod.title
             it.txtDate.text = apod.date
             it.txtExplanation.text = apod.explanation
-            it.txtServiceVersion.text = apod.serviceVersion
-            it.txtMediaType.text = apod.mediaType
+//            it.txtServiceVersion.text = apod.serviceVersion
+//            it.txtMediaType.text = apod.mediaType
         }
     }
 

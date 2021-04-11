@@ -52,6 +52,7 @@
     <TextView
         android:id="@+id/txtTitle"
         style="@style/TitleTxtv"
+        android:layout_marginTop="@dimen/txtv_default_margin"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -61,6 +62,7 @@
     <TextView
         android:id="@+id/txtDate"
         style="@style/DateTxtv"
+        android:layout_marginTop="@dimen/txtv_default_margin"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -70,25 +72,10 @@
     <TextView
         android:id="@+id/txtExplanation"
         style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/txtv_default_margin"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDate" />
-
-    <TextView
-        android:id="@+id/txtServiceVersion"
-        style="@style/MarginTxtv"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtExplanation" />
-
-    <TextView
-        android:id="@+id/txtMediaType"
-        style="@style/MarginTxtv"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtServiceVersion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
