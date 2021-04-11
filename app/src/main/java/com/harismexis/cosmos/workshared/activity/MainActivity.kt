@@ -2,6 +2,7 @@ package com.harismexis.cosmos.workshared.activity
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity() {
                 ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             }
 
+            if (destination.id == R.id.media_player_dest) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            } else {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+            }
         }
     }
 }
