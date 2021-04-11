@@ -20,7 +20,7 @@ ViewBinding.
 ![Alt text](screenshots/apod/apod-video-2020-12-17-200120.png?raw=true "app screenshot")
 
 #### Astronomy Picture of the day (APOD) - video full screen
-![Alt text](screenshots/apod/apod-video-fullscreen.png?raw=true "app screenshot")
+![Alt text](screenshots/apod/apod-player-screen.png?raw=true "app screenshot")
 
 #### Mars Rover Photos (MRP)
 ![Alt text](screenshots/mrp/mrp-2020-12-14-021600.png?raw=true "app screenshot")
