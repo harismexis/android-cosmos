@@ -11,7 +11,7 @@ Glide, LiveData, PierfrancescoSoffritti/android-youtube-player, MediaPlayer,
 ViewBinding.
 
 #### Home
-![Alt text](screenshots/home/home-2020-12-14-021454.png?raw=true "app screenshot")
+![Alt text](screenshots/home/home.png?raw=true "app screenshot")
 
 #### Astronomy Picture of the day APOD - photo
 ![Alt text](screenshots/apod/apod-2020-12-14-021530.png?raw=true "app screenshot")
