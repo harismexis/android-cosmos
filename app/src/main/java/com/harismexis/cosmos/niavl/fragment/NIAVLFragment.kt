@@ -19,7 +19,7 @@ import com.harismexis.cosmos.workshared.activity.BaseFragment
 import com.harismexis.cosmos.workshared.util.ui.hideKeyboard
 
 /**
- * Search for images and videos in NASA Image and Video Library
+ * Screen to search for image / video / audio in NASA Image and Video Library
  */
 class NIAVLFragment : BaseFragment(), NIAVLItemVh.NIAVLItemClickListener,
     android.widget.SearchView.OnQueryTextListener {

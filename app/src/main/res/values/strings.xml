@@ -6,25 +6,17 @@
 
     <string name="home_label">Explore NASA</string>
     <string name="apod_label">Picture of the day</string>
-    <string name="mrp_label">Latest Mars Rover Photos</string>
+
     <string name="niavl_label">Search</string>
 
     <string name="vh_home_apod_title">Astronomy Picture of the day</string>
-
     <string name="vh_home_mrp_title">Mars Rover Photos</string>
-
     <string name="vh_home_niavl_title">NASA Image and Video Library</string>
     <string name="vh_home_niavl_meta">Search for Images and Videos</string>
 
+    <string name="mrp_label">Latest Mars Rover Photos</string>
     <string name="vh_mrp_item_id_txt">No %1$d</string>
 
-    <!--Menu-->
-    <string name="select_file">Select Video</string>
-
-    <!--Play Image Button Description-->
-    <string name="image_button_desc">This is the play and pause button for the video player.</string>
-
-    <!--Default value-->
-    <string name="default_value">00:00</string>
+    <string name="media_player_progress">00:00</string>
 
 </resources>

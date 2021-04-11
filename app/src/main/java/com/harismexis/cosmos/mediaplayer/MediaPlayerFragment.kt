@@ -33,16 +33,16 @@ class MediaPlayerFragment : BaseFragment(),
     override fun onViewCreated() {
         player.setOnPreparedListener(this)
         binding?.let {
-            it.videoView.holder.addCallback(this)
+            it.playerView.holder.addCallback(this)
             it.seekBar.setOnSeekBarChangeListener(this)
-            it.playButton.isEnabled = false
-            it.playButton.setOnClickListener { _ ->
+            it.playBtn.isEnabled = false
+            it.playBtn.setOnClickListener { _ ->
                 if (player.isPlaying) {
                     player.pause()
-                    it.playButton.setImageResource(android.R.drawable.ic_media_play)
+                    it.playBtn.setImageResource(android.R.drawable.ic_media_play)
                 } else {
                     player.start()
-                    it.playButton.setImageResource(android.R.drawable.ic_media_pause)
+                    it.playBtn.setImageResource(android.R.drawable.ic_media_pause)
                 }
             }
         }
@@ -61,17 +61,17 @@ class MediaPlayerFragment : BaseFragment(),
     private fun initializeSeekBar() {
         binding?.let {
             it.seekBar.max = player.seconds
-            it.textProgress.text = getString(R.string.default_value)
-            it.textTotalTime.text = timeInString(player.seconds)
+            it.txtProgress.text = getString(R.string.media_player_progress)
+            it.txtDuration.text = timeInString(player.seconds)
             it.progressBar.visibility = View.GONE
-            it.playButton.isEnabled = true
+            it.playBtn.isEnabled = true
         }
     }
 
     private fun updateSeekBar() {
         seekRunnable = Runnable {
             binding?.let {
-                it.textProgress.text = timeInString(player.currentSeconds)
+                it.txtProgress.text = timeInString(player.currentSeconds)
                 it.seekBar.progress = player.currentSeconds
             }
             handler.postDelayed(seekRunnable, SECOND.toLong())
