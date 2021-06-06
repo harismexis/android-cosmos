@@ -1,9 +1,11 @@
 buildscript {
 
+    apply from: 'buildsystem/configurations.gradle'
     apply from: 'buildsystem/dependencies.gradle'
 
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
     ext {
@@ -11,13 +13,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath 'com.android.tools.build:gradle:4.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }
-
-apply from: 'buildsystem/configurations.gradle'
 
 task clean(type: Delete) {
     delete rootProject.buildDir
