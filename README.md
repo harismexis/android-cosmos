@@ -2,7 +2,8 @@
 
 More NASA APIs & features will be added, this is an ongoing project.
 I created this project to experiment and learn.
-You need to add your own NASA API key in configurations.gradle.
+You need to add your own NASA API key in local.properties as a String i.e.
+NASA_API_KEY="ThisIsMyKey"
 
 ### Technologies:
 
